@@ -51,16 +51,17 @@ This lesson is broken down into three parts...
 
 ## Homework: [NBA Stats](https://github.com/ga-wdi-exercises/nba_stats)
 
-## Screencasts
-
-- WDI7 (Matt Scilipoti): [Part 1](https://youtu.be/cuPXKDMEhKw), [Part 2](https://youtu.be/wQtBDerdyKw)
-- ERDs WDI7 (Matt Scilipoti): https://youtu.be/IDnOMi9jHgo
-
 ## Practice
 
-- [SQL for Beginners](https://www.codewars.com/collections/sql-for-beginners/): Created by WDI14 graduate and current GA instructor Mike Nabil.
-- [SQL Zoo](https://sqlzoo.net/)
+The following two resources are a great way to gain further familiarity with SQL. We fully expect this to be a challenge. If you're struggling on the homework, watch the Code School course on SQL and try the SQL for Beginners exercises before trying to finish the homework:
+
 - [Code School Try SQL](https://www.codeschool.com/courses/try-sql)
-- [W3 Schools SQL tutorial](https://www.w3schools.com/sql/)
+- [SQL for Beginners](https://www.codewars.com/collections/sql-for-beginners/): Created by WDI14 graduate and current GA instructor Mike Nabil.
+- [The official PostgreSQL tutorial](https://www.postgresql.org/docs/9.3/static/tutorial.html)
+
+## Additional Practice
+
 - [Postgres Guide](http://postgresguide.com/)
+- [SQL Zoo](https://sqlzoo.net/)
+- [W3 Schools SQL tutorial](https://www.w3schools.com/sql/)
 - [SQL Course](http://www.sqlcourse.com/)

@@ -75,16 +75,15 @@ ERDs grow more complex the larger an application becomes. They are a crucial too
 
 Come up with an example ERD for an application that manages a library.
 
-### You Do: ERD's for Web Pages in the Wild (15 minutes / 0:45)
+### We Do: ERD's for Web Pages in the Wild (15 minutes / 0:45)
 
 > 10 minutes. 5 minutes review.
 
-Now do the same thing, this time for a real world application. Make an ERD for the option that matches your group number below...
+Count off in to groups. Together with your group make an ERD, but this time for a real world application. Make an ERD for the option that matches your group number below...
 
 1. Amazon
 2. Facebook
 3. Reddit
 4. ESPN
-<!-- 5. Twitter -->
 
 ## Break (10 minutes / 0:55)
