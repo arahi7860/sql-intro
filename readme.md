@@ -57,7 +57,10 @@ The following two resources are a great way to gain further familiarity with SQL
 
 - [Code School Try SQL](https://www.codeschool.com/courses/try-sql)
 - [SQL for Beginners](https://www.codewars.com/collections/sql-for-beginners/): Created by WDI14 graduate and current GA instructor Mike Nabil.
-- [The official PostgreSQL tutorial](https://www.postgresql.org/docs/9.3/static/tutorial.html)
+- [The official PostgreSQL Documentation](https://www.postgresql.org/docs/9.3/static/index.html) is also very good, in particular:
+  - [The preface](https://www.postgresql.org/docs/9.3/static/preface.html)
+  - [The official tutorial](https://www.postgresql.org/docs/9.3/static/tutorial.html)
+  - [The overview of SQL](https://www.postgresql.org/docs/9.3/static/sql.html)
 
 ## Additional Practice
 

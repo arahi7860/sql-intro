@@ -9,15 +9,15 @@
 
 ## Framing
 
-Developers employ **user stories** clarify the features we need for a good user experience. What is a user story?
+Have you heard the phrase,
 
-> User stories are short, simple descriptions of a feature told from the perspective of the person who desires the new capability, usually a user or customer of the system. They typically follow a simple template:
->
-> As a `type of user`, I want `some goal` so that `some reason`.
->
-> Source: [Mountain Goat Software](https://www.mountaingoatsoftware.com/agile/user-stories)
+> Measure 3 times, cut once?
 
-We use them to prioritize order and scope. Today, we will identify the information required to support those user stories. We refer to this as the **Domain** or **Domain Model**. The Domain Model specifies the data and the relationships between this data. We use it to decide what needs to be persisted.
+When we're building a large application, it makes sense to plan as much as we can how the app will end up being structured. Once the app is built, it can be difficult to go back in and restructure the app in significant ways, as many of you maybe found during your projects. When we add user data and databases to our application, changing the structure of our app can become nearly impossible.
+
+Similarly, if we have a really large application, it can be difficult to keep track of what has been modelled in our application and what will require saving some new data if we're adding a feature. So not only do we need to measure 3 times before starting to build out app, we also want some way of keeping track of what those measurements were as we're building.
+
+This is where Domain Modelling and Entity Relationship Diagrams come in.
 
 ## Domain Modeling (20 minutes / 0:20)
 
@@ -26,13 +26,13 @@ Domain Modeling allows us to outline the data values that we need to persist.
 - A domain model in problem solving and software engineering is a conceptual model of all items and topics related to a specific problem
 - It describes the various entities, their attributes, roles and relationships, plus the constraints that govern the problem domain
 
-The big takeaway here is that domain modeling **does not describe solutions to the problem**. Instead, it defines how our data is structured.
+The big takeaway here is that domain modeling **does not describe solutions to the problem**, our application code will do that. Our domain model will represent our understanding of the problem, which will translate to an understanding of how our data needs to be structured.
 
 ### ERDs
 
 An ERD -- or **Entity Relationship Diagram** -- is a tool we use to visualize and describe the data relating to the major entities that will exist in our programs.
 - Ultimately lends itself to planning out and creating our database table structure
-- It allows us to outline the data in our application, not the behavior
+- It allows us to outline the data in our application
 
 ### Example: An Orchard
 
@@ -40,6 +40,7 @@ Take a minute to look through the below diagram. Note down any observations you 
 
 ![orchard example](images/orchard.png)
 
+What are some of your observations?
 - The squares represent our entities and are filled with the attributes associated with our entity.
 - The arrows between the squares indicate how the entities relate to one another.
 
@@ -73,7 +74,10 @@ ERDs grow more complex the larger an application becomes. They are a crucial too
 
 > 10 minutes exercise. 5 minutes review.
 
-Come up with an example ERD for an application that manages a library.
+Come up with an example ERD for an application that manages a library:
+* What entities does a library have?
+* What attributes do those entities have?
+* How do these entities relate to each other?
 
 ### We Do: ERD's for Web Pages in the Wild (15 minutes / 0:45)
 

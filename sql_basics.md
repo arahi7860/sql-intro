@@ -94,7 +94,7 @@ Start by "spotlight searching" (`command-space`) for Postgres and launching `Pos
 
 We'll use `psql` as our primary means of interacting with our databases. Later on we'll use Ruby or server-side Javascript to do so in our programs.
 
-Here's a quick demo. Following along is optional.
+Here's a quick demo. I recommend just watching and taking notes for this part. Don't try to code along.
 
 ```sql
 help -- general help
@@ -102,10 +102,10 @@ help -- general help
 \h   -- help with SQL commands
 \l   -- Lists all databases
 
-CREATE DATABASE wdi15; -- Don't forget the semicolon!
+CREATE DATABASE generalassembly; -- Don't forget the semicolon!
 \l -- What changed?
 
-\c wdi15 -- Connect to wdi15 database
+\c generalassembly -- Connect to generalassembly database
 
 \d -- Lists all tables
 
@@ -188,13 +188,11 @@ Constraints act as limits on the data that can go in a column.
 
 > [And many more...](http://www.postgresql.org/docs/8.1/static/ddl-constraints.html)
 
-
 ### Defining a Schema
 
 Next we're going to build a schema for a database in a sample application. It can change later on if we need to add / remove tables or columns, but we'll start with something simple.
 
 Instead of typing this into `psql`, we're going to do so by saving the schema to a `.sql` file and run it, just like we have with `.js` and `.rb` files.
-
 ## You Do: Building Our Database (15 minutes / 1:50)
 
 > 15 minutes exercise. 5 minutes review.
