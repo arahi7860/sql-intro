@@ -9,7 +9,6 @@
 
 ## Review Questions
 
-```html
 <details>
 <summary>What is a database and why would we use one?</summary>
 <br>
@@ -39,7 +38,6 @@
 <br>
 
 </details>
-```
 
 <!-- ### Domain Modeling & ERD
 
