@@ -193,7 +193,7 @@ Within a mongoDB database, our data is organized in JSON objects. A collection c
         "yearReleased": 1982
       },
       {
-        "songName" : "Rasberry Beret",
+        "songName" : "Raspberry Beret",
         "yearReleased": 1985
       }
     ]
@@ -215,13 +215,19 @@ Within a mongoDB database, our data is organized in JSON objects. A collection c
 ]
 ```
 
-| ArtistID | ArtistName     | Nationality |
+In a relational database, this data would be stored in two tables.
+
+| artistID | artistName     | nationality |
 |----------|----------------|-------------|
 | 1        | Prince         | American    |
 | 2        | Sir Elton John | British     |
 
-
-
+| SongID | songName          | yearReleased | ArtistID |
+|--------|-------------------|--------------|----------|
+| 1      | Little Red Corvet | 1982         | 1        |
+| 2      | Raspberry Beret    | 1985         | 1        |
+| 3      | Tiny Dancer       | 1971         | 2        |
+| 4      | Your Song         | 1970         | 2        |
 
 
 ### Basics of Databases, and SQL
