@@ -155,10 +155,40 @@ PostgreSQL is a relational database management system. There are many others lik
 - we can relate rows in the `songs` table to rows in the `artists` table
 - to relate data we use `keys` that are unique identifiers for each row of a table.
 
-#### Lets Compare
+#### Lets Talk Terminology
 
 ![SQL vs noSQL comparison](images/SQL-MongoDB-comparison.png)
 
+**Database:** The actual set of data being stored
+
+- We may have multiple databases for an application
+
+**Database Language:** The language used to interact with a database
+
+- With relational databases, we use SQL
+- There isn't a standard language across noSQL databases
+
+**Database Management System (DBMS):** The software that lets a user interact (query) the data in a database
+
+- relational examples include PostgreSQL and MySQL
+<details>
+<summary>What DBMS did we use when building MERN apps?</summary>
+<br>
+
+> Mongoose!
+
+</details>
+
+**Database CLI:** A tool offered by most DBMSs that allow users to query the database from the command line
+
+- we will use one called `psql` for PostgreSQL
+<details>
+<summary>What was the mongoose equivalent?</summary>
+<br>
+
+> The mongo shell
+
+</details>
 
 
 
