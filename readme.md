@@ -35,7 +35,7 @@
 <summary>How would you represent a one to many relationship?</summary>
 <br>
 
-![one-to-many]('./images/one-to-many.png')
+![one-to-many]('./images/one-to-many2.png')
 
 </details>
 
