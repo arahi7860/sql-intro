@@ -133,8 +133,41 @@ MongoDB's uses replica sets by default
 
 ### PostgreSQL is relational (SQL)
 
+PostgreSQL is a relational database management system. There are many others like MySQL and SQLite. They are all queried using **SQL. In a relational database, data is stored in tables.
+
+#### What is a Relational Database?
+
+##### Data is stored in tables
+
+- tables are organized by columns and rows (imagine a spreadsheet)
+- tables are named according to what they model (e.g., `artists`, `songs`)
+- In the case of `artists`, each row represents one artist
+- Each column is called an **attribute** or **field**, such as `id`, `title`, or `birth_year`
+- users are required to create schemas before data can be stored
+
+##### Queries are made via SQL (Structured Query Language)
+
+- SQL is a database language used specifically for relational databases
+- SQL is great for reliably managing complex queries
+
+##### Data is related between tables
+
+- we can relate rows in the `songs` table to rows in the `artists` table
+- to relate data we use `keys` that are unique identifiers for each row of a table.
+
+#### Lets Compare
 
 ![SQL vs noSQL comparison](images/SQL-MongoDB-comparison.png)
+
+
+
+
+
+
+
+
+
+
 
 ### Basics of Databases, and SQL
 
