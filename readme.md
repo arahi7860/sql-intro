@@ -222,12 +222,38 @@ In a relational database, this data would be stored in two tables.
 | 1        | Prince         | American    |
 | 2        | Sir Elton John | British     |
 
-| SongID | songName          | yearReleased | ArtistID |
+| songID | songName          | yearReleased | artistID |
 |--------|-------------------|--------------|----------|
-| 1      | Little Red Corvet | 1982         | 1        |
-| 2      | Raspberry Beret    | 1985         | 1        |
-| 3      | Tiny Dancer       | 1971         | 2        |
+| 1      | Tiny Dancer       | 1971         | 2        |
+| 2      | Little Red Corvet | 1982         | 1        |
+| 3      | Raspberry Beret   | 1985         | 1        |
 | 4      | Your Song         | 1970         | 2        |
+
+##### You Do: Database Conversion
+
+> 8 mins / 2 mins
+
+Find a partner and think of a shared interest that can be used to demonstrate a one-to-many relationship like the example above. Find a space to whiteboard and create sample JSON data. Then create tables to represent the same data.
+
+#### Key Advantages
+
+##### SQL
+
+- SQL is used in most relational databases meaning interaction across different relational DBMS is very similar
+- SQL is well documented and robust in its utility
+- SQL allows you to create dynamic relationships between tables through joins
+
+##### Consistency
+
+- a lot of data is tabular already, relational databases store it in a similar form
+- Schemas mean you know exactly what attributes (columns) for each database entry (row)
+- Schemas can check the type of data being stored to ensure data coming in is properly formated and consistent with other entries.
+
+##### Security
+
+- data is centrally stored so there is no inconsistency across servers
+- strict schemas protect against unwanted or malicious entries
+- able to comply with ACID (atomicity, consistency, isolation, durability) properties
 
 
 ### Basics of Databases, and SQL
