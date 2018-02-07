@@ -13,7 +13,7 @@
 <summary>What is a database and why would we use one?</summary>
 <br>
 
-A database is a tool for storing data. It offers many advantages to storying in a text or binary file:
+> A database is a tool for storing data. It offers many advantages to storying in a text or binary file:
 
 - **Permanence**
 - **Speed**
@@ -25,20 +25,17 @@ A database is a tool for storing data. It offers many advantages to storying in 
 
 <details>
 <summary>What is an ERD and why would we use one?</summary>
+<br>
 
-A database is a tool for storing data. It offers many advantages to storying in a text or binary file:
-
-- **Permanence**
-- **Speed**
-- **Consistency**
-- **Scalability**
-- **Querying**
+> An **Entity Relationship Diagram** is a tool to visualize and describe the data and relationships of our programs.
 
 </details>
 
 <details>
 <summary>How would you represent a one to many relationship?</summary>
 <br>
+
+![one-to-many]('./images/one-to-many.png')
 
 </details>
 
@@ -90,7 +87,7 @@ A database is a tool for storing data. It offers many advantages to storying in 
 
 This lesson is broken down into three parts...
 
-<!-- 1. [Domain Modeling & ERDs](erd_domains.md) -->
+1. [Domain Modeling & ERDs](erd_domains.md)
 2. [Basics of Databases and SQL](sql_basics.md)
 3. [Relationships in SQL](sql_relationships.md)
 
