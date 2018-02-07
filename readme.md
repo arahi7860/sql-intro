@@ -13,11 +13,26 @@
 <summary>What is a database and why would we use one?</summary>
 <br>
 
+A database is a tool for storing data. It offers many advantages to storying in a text or binary file:
+
+- **Permanence**
+- **Speed**
+- **Consistency**
+- **Scalability**
+- **Querying**
+
 </details>
 
 <details>
 <summary>What is an ERD and why would we use one?</summary>
-<br>
+
+A database is a tool for storing data. It offers many advantages to storying in a text or binary file:
+
+- **Permanence**
+- **Speed**
+- **Consistency**
+- **Scalability**
+- **Querying**
 
 </details>
 
