@@ -105,9 +105,31 @@ noSQL databases **historically and generally** offer more flexibility and scalab
 
 ### MongoDB is non-relational (noSQL)
 
+MongoDB is document based. Meaning, data is organized in collections of related documents formatted in JSON.
 
+#### Key Advantages
 
+##### Usability
 
+- Documents (i.e. objects) correspond to native data types in many programming languages
+- Schema-less, documents can contain data that is variable, no need for migrations
+
+##### High Performance
+
+- Documents can be embedded in one another reducing the need for joins.
+- Simple queries are very fast
+
+##### High Availability
+
+MongoDB's uses replica sets by default
+
+- automatic failover, if data is mistakenly destroyed, it's backed up elsewhere
+- data redundancy can increase speed of read requests
+
+##### Automatic Scaling
+
+- Sharding distributes data across a cluster of servers
+- Replica sets provide low-latency high-throughput deployments
 
 ### Basics of Databases, and SQL
 
