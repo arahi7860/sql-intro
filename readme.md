@@ -94,50 +94,9 @@ const CandidateSchema = new mongoose.Schema({
 
 </details>
 
-## Relational vs Non-Relational | PostgreSQL vs MongoDB
+## What is a Relational Database?
 
-Non-Relational or *noSQL* databases have existed in some form for decades, however their use didn't become wide spread until recently. noSQL databases became an important alternative to relational databases in the early 2000s as companies like Facebook, Google, and Amazon's data storage needs changed and expanded. With the rise of social media and online marketplaces like eBay, the amount of data on the internet boomed. User were not only getting information from the internet, they were contributing to it. This transition stressed the capabilities of relational databases due to the volume and variability of user-generated data.
-
-noSQL databases **historically and generally** offer more flexibility and scalability than traditional relational databases. However, they come with the cost of reduced consistency.
-
-> **NOTE: Many of the distinctions between relational and non-relational databases are becoming blurred.** While relational and noSQL databases have fundamental differences and each have pros and cons, modern technology is bridging the gap through innovations that combat the weaknesses of each model.
-
-
-### MongoDB is non-relational (noSQL)
-
-MongoDB is document based. Meaning, data is organized in collections of related documents formatted in JSON.
-
-#### Key Advantages
-
-##### Usability
-
-- Documents (i.e. objects) correspond to native data types in many programming languages
-- Schema-less, documents can contain data that is variable, no need for migrations
-
-##### High Performance
-
-- Documents can be embedded in one another reducing the need for joins.
-- Simple queries are very fast
-
-##### High Availability
-
-MongoDB's uses replica sets by default
-
-- automatic failover, if data is mistakenly destroyed, it's backed up elsewhere
-- data redundancy can increase speed of read requests
-
-##### Automatic Scaling
-
-- Sharding distributes data across a cluster of servers
-- Replica sets provide low-latency high-throughput deployments
-
-### PostgreSQL is relational (SQL)
-
-PostgreSQL is a relational database management system. There are many others like MySQL and SQLite. They are all queried using **SQL. In a relational database, data is stored in tables.
-
-#### What is a Relational Database?
-
-##### Data is stored in tables
+### Data is stored in tables
 
 - tables are organized by columns and rows (imagine a spreadsheet)
 - tables are named according to what they model (e.g., `artists`, `songs`)
@@ -145,17 +104,17 @@ PostgreSQL is a relational database management system. There are many others lik
 - Each column is called an **attribute** or **field**, such as `id`, `title`, or `birth_year`
 - users are required to create schemas before data can be stored
 
-##### Queries are made via SQL (Structured Query Language)
+### Queries are made via SQL (Structured Query Language)
 
 - SQL is a database language used specifically for relational databases
 - SQL is great for reliably managing complex queries
 
-##### Data is related between tables
+### Data is related between tables
 
 - we can relate rows in the `songs` table to rows in the `artists` table
 - to relate data we use `keys` that are unique identifiers for each row of a table.
 
-#### Lets Talk Terminology
+## Lets Talk Terminology
 
 ![SQL vs noSQL comparison](images/SQL-MongoDB-comparison.png)
 
@@ -178,7 +137,7 @@ PostgreSQL is a relational database management system. There are many others lik
 - we will use one called `psql` for PostgreSQL
 - **What was the mongoose equivalent?**
 
-#### Data Compared: Collections -> Tables
+### Data Compared: Collections -> Tables
 
 Within a mongoDB database, our data is organized in JSON objects. A collection could look like this:
 
@@ -229,11 +188,49 @@ In a relational database, this data would be stored in two tables.
 | 3      | Raspberry Beret   | 1985         | 1        |
 | 4      | Your Song         | 1970         | 2        |
 
-##### You Do: Database Conversion
+### You Do: Database Conversion
 
 > 8 mins / 2 mins
 
 Find a partner and think of a shared interest that can be used to demonstrate a one-to-many relationship like the example above. Find a space to whiteboard and create sample JSON data. Then create tables to represent the same data.
+
+## Relational vs Non-Relational | PostgreSQL vs MongoDB
+
+Non-Relational or *noSQL* databases have existed in some form for decades, however their use didn't become wide spread until recently. noSQL databases became an important alternative to relational databases in the early 2000s as companies like Facebook, Google, and Amazon's data storage needs changed and expanded. With the rise of social media and online marketplaces like eBay, the amount of data on the internet boomed. User were not only getting information from the internet, they were contributing to it. This transition stressed the capabilities of relational databases due to the volume and variability of user-generated data.
+
+noSQL databases **historically and generally** offer more flexibility and scalability than traditional relational databases. However, they come with the cost of reduced consistency.
+
+> **NOTE: Many of the distinctions between relational and non-relational databases are becoming blurred.** While relational and noSQL databases have fundamental differences and each have pros and cons, modern technology is bridging the gap through innovations that combat the weaknesses of each model.
+
+### MongoDB is non-relational (noSQL)
+
+MongoDB is document based. Meaning, data is organized in collections of related documents formatted in JSON.
+
+#### Key Advantages
+
+##### Usability
+
+- Documents (i.e. objects) correspond to native data types in many programming languages
+- Schema-less, documents can contain data that is variable, no need for migrations
+
+##### High Performance
+
+- Documents can be embedded in one another reducing the need for joins.
+- Simple queries are very fast
+
+##### High Availability
+
+MongoDB's uses replica sets by default
+
+- automatic failover, if data is mistakenly destroyed, it's backed up elsewhere
+- data redundancy can increase speed of read requests
+
+##### Automatic Scaling
+
+- Sharding distributes data across a cluster of servers
+- Replica sets provide low-latency high-throughput deployments
+
+### PostgreSQL is relational (SQL)
 
 #### Key Advantages
 
@@ -255,6 +252,143 @@ Find a partner and think of a shared interest that can be used to demonstrate a 
 - strict schemas protect against unwanted or malicious entries
 - able to comply with ACID (atomicity, consistency, isolation, durability) properties
 
+PostgreSQL is a relational database management system. There are many others like MySQL and SQLite. They are all queried using **SQL. In a relational database, data is stored in tables.
+
+### So which is better?
+
+**Sorry, there's no easy answer.** While relational and non-relational databases have some key differences on paper, popular database management systems are evolving rapidly to meet the needs of a variety of users. You can likely accomplish the same goals with either a SQL or noSQL database.
+
+In general, noSQL databases are great for unstructured or inconsistent data. Think Facebook. Facebook is rapidly evolving and it needs a flexible way to store and modify existing data. noSQL is a good fit for medical records too! Patient data may look very different between different doctors or hospital. To compare or compile this information would be nearly impossible with a relational database with a strict schema.
+
+Relational databases are great when secure transactions are important. Banking applications may prefer the rigidity of SQL databases to monitor account data and transactions. Relational databases are also good at managing inventories and tracking deliveries. ACID compliance ensures that a process is finished to completion or not at all. You'll never lose a package or find it in two places.
+
+## BREAK
+
+> 10 mins
+
+## Exploring Postgres (15 minutes / 1:25)
+
+We are learning in order to be able to read it. We'll look stuff up when we want to write it.
+
+But there have been times GA grads need to use it!
+
+![SQL](./images/screenshot_kibble.png)
+
+Start by "spotlight searching" (`command-space`) for Postgres and launching `Postgres.app`. Once you see the elephant in your Mac menu bar, you'll know Postgres is running.
+
+### psql commands
+
+We'll use `psql` as our primary means of interacting with our databases. Later on we'll use Ruby or server-side Javascript to do so in our programs.
+
+Here's a quick demo. I recommend just watching and taking notes for this part. Don't try to code along.
+
+```sql
+help -- general help
+\?   -- help with psql commands
+\h   -- help with SQL commands
+\l   -- Lists all databases
+
+CREATE DATABASE generalassembly; -- Don't forget the semicolon!
+\l -- What changed?
+
+\c generalassembly -- Connect to generalassembly database
+
+\d -- Lists all tables
+
+CREATE TABLE students (
+  id SERIAL PRIMARY KEY,
+  first_name VARCHAR NOT NULL,
+  last_name VARCHAR NOT NULL,
+  quote TEXT,
+  birthday VARCHAR,
+  ssn INT NOT NULL UNIQUE
+); -- Here we are defining a schema. More on this in just a bit...
+
+\d
+
+SELECT * FROM students;
+
+INSERT INTO students (first_name, last_name) VALUES ('Andy', 'Whitely');
+-- This won't work!
+
+INSERT INTO students (first_name, last_name, quote, birthday, ssn) VALUES ('Andy', 'Whitely', 'Two goldfish are in a tank. One says, "Know how to drive this thing?"', 'April 7', 8675309);
+SELECT * FROM students;
+
+UPDATE students SET first_name = 'Andrew' WHERE first_name = 'Andy';
+SELECT * FROM students;
+
+DELETE FROM students WHERE first_name = 'Andy';
+DELETE FROM students WHERE first_name = 'Andrew';
+
+SELECT * FROM students;
+
+DROP TABLE students; -- "drop" means to delete an entire table or database
+
+DROP DATABASE wdi15;
+
+\q --quits
+```
+
+In short...
+- Backslash commands (e.g. `\l` ) are commands to navigate psql. These are psql-specific.
+- Everything else is SQL. The SQL is what actually interacts with the database.
+
+> If you're curious as to where exactly your databases are being stored locally, enter `SHOW data_directory;` while in psql.
+
+### SQL Syntax
+
+- All statements end in a semicolon
+- Whitespace doesn't matter
+- Uppercasing
+- Always use single quotes when typing out string values
+- [Ye olde style guide](http://leshazlewood.com/software-engineering/sql-style-guide/)
+
+## Schema (10 minutes / 1:35)
+
+Every application's database will have one or more tables. You will recall, each table stores information about a particular model (e.g., `artists`, `songs`).
+
+Each table has a **schema**, which defines what columns it has. For each column the schema defines...
+- The column's name
+- the column's data type
+- Any constraints for that column
+
+### Common Data Types
+
+Here are some common data types for SQL databases. They are all, for the most part, things you've seen before...
+
+- Boolean
+- Integer
+- Float
+- Text / VARCHAR
+  - VARCHAR is short, TEXT is long
+- NULL
+- Date
+- Time
+
+> [And many more...](http://www.postgresql.org/docs/9.3/interactive/datatype.html)
+
+### Constraints
+
+Constraints act as limits on the data that can go in a column.
+- e.g., `NOT NULL` and `UNIQUE`
+
+> [And many more...](http://www.postgresql.org/docs/8.1/static/ddl-constraints.html)
+
+### Defining a Schema
+
+Next we're going to build a schema for a database in a sample application. It can change later on if we need to add / remove tables or columns, but we'll start with something simple.
+
+Instead of typing this into `psql`, we're going to do so by saving the schema to a `.sql` file and run it, just like we have with `.js` and `.rb` files.
+## You Do: Building Our Database (15 minutes / 1:50)
+
+> 15 minutes exercise. 5 minutes review.
+
+Clone down and follow the instructions in the
+[library SQL Exercise repo](https://github.com/ga-wdi-exercises/library_sql).
+
+## You Do: Basic SQL Queries (20 minutes / 2:10)
+
+Complete the queries in `basic_queries.sql` in the library_sql repo.
 
 ### Basics of Databases, and SQL
 
