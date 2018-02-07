@@ -43,11 +43,51 @@
 <summary>What is a schema?</summary>
 <br>
 
+> A schema is a blueprint of how your data is organized and how your database is structured. **It introduces consistency to our data.**
+>
+> In mongoose schemas looked like this:
+```js
+const CandidateSchema = new mongoose.Schema({
+  name: String,
+  year: Number
+})
+```
+
 </details>
 
 <details>
 <summary>In what format is data in a mongoose database stored?</summary>
 <br>
+
+> Data in a non-relational database like mongodb is stored as JSON. It looks like this:
+
+```js
+{
+   "_id" : ObjectId("54c955492b7c8eb21818bd09"),
+   "address" : {
+      "street" : "2 Avenue",
+      "zipcode" : "10075",
+      "building" : "1480",
+      "coord" : [ -73.9557413, 40.7720266 ],
+   },
+   "borough" : "Manhattan",
+   "cuisine" : "Italian",
+   "grades" : [
+      {
+         "date" : ISODate("2014-10-01T00:00:00Z"),
+         "grade" : "A",
+         "score" : 11
+      },
+      {
+         "date" : ISODate("2014-01-16T00:00:00Z"),
+         "grade" : "B",
+         "score" : 17
+      }
+   ],
+   "name" : "Vella",
+   "restaurant_id" : "41704620"
+}
+```
 
 </details>
 
