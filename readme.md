@@ -6,6 +6,9 @@
 - Create, set up, and seed a PostgreSQL.
 - Execute SQL commands to perform CRUD actions.
 
+## Framing
+
+Today we are going to introduce a new paradigm for persisting data in our applications. Previously, we have used mongoDB as our database when building node applications. In fact, there are many alternatives. In this lesson we will contrast a new database management system, **PostgreSQL** a relational database, with mongoDB a non-relational database.
 
 ## Review Questions
 
@@ -15,11 +18,11 @@
 
 > A database is a tool for storing data. It offers many advantages to storying in a text or binary file:
 
-- **Permanence**
-- **Speed**
-- **Consistency**
-- **Scalability**
-- **Querying**
+- **Permanence:** Our data is safe and won't be altered or deleted. 
+- **Speed:** Databases are fast! They can be thousands of times faster than reading from a file.
+- **Consistency:** Databases can enforce rules that keep data uniform.
+- **Scalability:** Databases can handle lots of requests per second and many are built to scale by replicating and syncing information across multiple databases
+- **Querying:** Databases make it easy to search, sort, filter, and combine data using a Query Language.
 
 </details>
 
@@ -91,18 +94,25 @@ const CandidateSchema = new mongoose.Schema({
 
 </details>
 
-<!-- ### Domain Modeling & ERD
+## Relational vs Non-Relational | PostgreSQL vs MongoDB
 
-- Draw an Entity Relationship Diagram (ERD)
-- Identify and diagram one-to-one, one-to-many and many-to-many relationships between data entities
-- Distinguish between entities and attributes
-- Discuss data normalization needs and techniques -->
+Non-Relational or *noSQL* databases have existed in some form for decades, however their use didn't become wide spread until recently. noSQL databases became an important alternative to relational databases in the early 2000s as companies like Facebook, Google, and Amazon's data storage needs changed and expanded. With the rise of social media and online marketplaces like eBay, the amount of data on the internet boomed. User were not only getting information from the internet, they were contributing to it. This transition stressed the capabilities of relational databases due to the volume and variability of user-generated data.
+
+noSQL databases **historically and generally** offer more flexibility and scalability than traditional relational databases. However, they come with the cost of reduced consistency.
+
+> **NOTE: Many of the distinctions between relational and non-relational databases are becoming blurred.** While relational and noSQL databases have fundamental differences and each have pros and cons, modern technology is bridging the gap through innovations that combat the weaknesses of each model.
+
+
+### MongoDB is non-relational (noSQL)
+
+
+
+
 
 ### Basics of Databases, and SQL
 
 #### Concepts
 
-- Explain what a database is and why you would use one
 - Explain how a database, a database management system (DBMS) and SQL relate to one another
 - Describe a database schema and how it relates to tables, rows and columns
 
@@ -123,6 +133,9 @@ const CandidateSchema = new mongoose.Schema({
 - Use JOIN to combine tables in a SELECT
 - Describe what it means for a database to be normalized
 
+
+###
+
 ## Framing
 
 This lesson is broken down into three parts...
@@ -132,7 +145,6 @@ This lesson is broken down into three parts...
 3. [Relationships in SQL](sql_relationships.md)
 
 ## Sample Quiz Questions
-
 
 * What is the distinctive feature of a relational database?
 * How is information stored in a relational database?
