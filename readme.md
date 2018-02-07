@@ -1,13 +1,52 @@
-# Databases
+# SQL
 
 ## Learning Objectives
 
-### Domain Modeling & ERD
+- Contrast relational and non-relational databases
+- Create, set up, and seed a PostgreSQL.
+- Execute SQL commands to perform CRUD actions.
+
+
+## Review Questions
+
+```html
+<details>
+<summary>What is a database and why would we use one?</summary>
+<br>
+
+</details>
+
+<details>
+<summary>What is an ERD and why would we use one?</summary>
+<br>
+
+</details>
+
+<details>
+<summary>How would you represent a one to many relationship?</summary>
+<br>
+
+</details>
+
+<details>
+<summary>What is a schema?</summary>
+<br>
+
+</details>
+
+<details>
+<summary>In what format is data in a mongoose database stored?</summary>
+<br>
+
+</details>
+```
+
+<!-- ### Domain Modeling & ERD
 
 - Draw an Entity Relationship Diagram (ERD)
 - Identify and diagram one-to-one, one-to-many and many-to-many relationships between data entities
 - Distinguish between entities and attributes
-- Discuss data normalization needs and techniques
+- Discuss data normalization needs and techniques -->
 
 ### Basics of Databases, and SQL
 
@@ -18,6 +57,7 @@
 - Describe a database schema and how it relates to tables, rows and columns
 
 #### Mechanics
+
 - Create a new PostgreSQL database
 - Set up a PostgreSQL database schema with a saved SQL file
 - Seed a PostgreSQL database with a saved SQL file
@@ -37,13 +77,13 @@
 
 This lesson is broken down into three parts...
 
-1. [Domain Modeling & ERDs](erd_domains.md)
+<!-- 1. [Domain Modeling & ERDs](erd_domains.md) -->
 2. [Basics of Databases and SQL](sql_basics.md)
 3. [Relationships in SQL](sql_relationships.md)
 
 ## Sample Quiz Questions
 
-* What is an ERD and why would we use one?
+
 * What is the distinctive feature of a relational database?
 * How is information stored in a relational database?
 * What are the different types of relations that exist in a relational database?
