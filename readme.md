@@ -171,25 +171,12 @@ PostgreSQL is a relational database management system. There are many others lik
 **Database Management System (DBMS):** The software that lets a user interact (query) the data in a database
 
 - relational examples include PostgreSQL and MySQL
-- <details>
-<summary>What DBMS did we use when building MERN apps?</summary>
-<br>
-
-> Mongoose!
-
-</details>
-<br>
+- **What DBMS did we use when building MERN apps?**
 
 **Database CLI:** A tool offered by most DBMSs that allow users to query the database from the command line
 
 - we will use one called `psql` for PostgreSQL
-<details>
-<summary>What was the mongoose equivalent?</summary>
-<br>
-
-> The mongo shell
-
-</details>
+- **What was the mongoose equivalent?**
 
 
 
