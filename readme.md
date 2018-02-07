@@ -178,10 +178,47 @@ PostgreSQL is a relational database management system. There are many others lik
 - we will use one called `psql` for PostgreSQL
 - **What was the mongoose equivalent?**
 
+#### Data Compared: Collections -> Tables
 
+Within a mongoDB database, our data is organized in JSON objects. A collection could look like this:
 
+```js
+[
+  {
+    "artistName" : "Prince",
+    "nationality" : "American",
+    "songs" : [
+      {
+        "songName" : "Little Red Corvet",
+        "yearReleased": 1982
+      },
+      {
+        "songName" : "Rasberry Beret",
+        "yearReleased": 1985
+      }
+    ]
+  },
+  {
+    "artistName" : "Sir Elton John",
+    "nationality" : "British",
+    "songs" : [
+      {
+        "songName" : "Tiny Dancer",
+        "yearReleased": 1971
+      },
+      {
+        "songName" : "Your Song",
+        "yearReleased": 1970
+      }
+    ]
+  }
+]
+```
 
-
+| ArtistID | ArtistName     | Nationality |
+|----------|----------------|-------------|
+| 1        | Prince         | American    |
+| 2        | Sir Elton John | British     |
 
 
 
