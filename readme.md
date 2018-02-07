@@ -131,6 +131,11 @@ MongoDB's uses replica sets by default
 - Sharding distributes data across a cluster of servers
 - Replica sets provide low-latency high-throughput deployments
 
+### PostgreSQL is relational (SQL)
+
+
+![SQL vs noSQL comparison](images/SQL-MongoDB-comparison.png)
+
 ### Basics of Databases, and SQL
 
 #### Concepts
