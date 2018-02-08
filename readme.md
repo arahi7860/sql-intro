@@ -3,9 +3,9 @@
 ## Learning Objectives
 
 - Contrast relational and non-relational databases
-- Create, set up, and seed a PostgreSQL.
-- Describe how to represent relationships in SQL databases
+- Create, set up, and seed a PostgreSQL database.
 - Execute SQL commands to perform CRUD actions.
+- Describe how to represent relationships in SQL databases
 - Use JOIN to combine tables in a SELECT
 
 ## Framing
@@ -37,7 +37,7 @@ Today we are going to introduce a new paradigm for persisting data in our applic
 </details>
 
 <details>
-<summary>How would you represent a one to many relationship?</summary>
+<summary>How would you visually represent a one to many relationship?</summary>
 <br>
 
 ![one-to-many](images/one-to-many2.png)
@@ -50,7 +50,7 @@ Today we are going to introduce a new paradigm for persisting data in our applic
 
 > A schema is a blueprint of how your data is organized and how your database is structured. **It introduces consistency to our data.**
 >
-> In mongoose schemas looked like this:
+> A mongoose schemas looked like this:
 ```js
 const CandidateSchema = new mongoose.Schema({
   name: String,
@@ -194,7 +194,7 @@ In a relational database, this data would be stored in two tables.
 
 > 8 mins / 2 mins
 
-Find a partner and think of a shared interest that can be used to demonstrate a one-to-many relationship like the example above. Find a space to whiteboard and create sample JSON data. Then create tables to represent the same data.
+Find a partner and think of a shared interest that can be used to demonstrate a one-to-many relationship like the example above. Find a space to whiteboard and create sample JSON data. Then create tables to represent the same data as it would appear in a SQL database.
 
 ## Relational vs Non-Relational | PostgreSQL vs MongoDB
 
@@ -236,6 +236,8 @@ MongoDB's uses replica sets by default
 
 #### Key Advantages
 
+PostgreSQL is a relational database management system. There are many others like MySQL and SQLite. They are all queried using SQL. In a relational database, data is stored in tables.
+
 ##### SQL
 
 - SQL is used in most relational databases meaning interaction across different relational DBMS is very similar
@@ -254,13 +256,11 @@ MongoDB's uses replica sets by default
 - strict schemas protect against unwanted or malicious entries
 - able to comply with ACID (atomicity, consistency, isolation, durability) properties
 
-PostgreSQL is a relational database management system. There are many others like MySQL and SQLite. They are all queried using **SQL. In a relational database, data is stored in tables.
-
 ### So which is better?
 
 **Sorry, there's no easy answer.** While relational and non-relational databases have some key differences on paper, popular database management systems are evolving rapidly to meet the needs of a variety of users. You can likely accomplish the same goals with either a SQL or noSQL database.
 
-In general, noSQL databases are great for unstructured or inconsistent data. Think Facebook. Facebook is rapidly evolving and it needs a flexible way to store and modify existing data. noSQL is a good fit for medical records too! Patient data may look very different between different doctors or hospital. To compare or compile this information would be nearly impossible with a relational database with a strict schema.
+In general, noSQL databases are great for unstructured, inconsistent, or frequently changing data. Think Facebook. Facebook is rapidly evolving and it needs a flexible way to store and modify existing data. noSQL is a good fit for medical records too! Patient data may look very different between different doctors or hospital. To compare or compile this information would be nearly impossible with a relational database with a strict schema.
 
 Relational databases are great when secure transactions are important. Banking applications may prefer the rigidity of SQL databases to monitor account data and transactions. Relational databases are also good at managing inventories and tracking deliveries. ACID compliance ensures that a process is finished to completion or not at all. You'll never lose a package or find it in two places.
 
@@ -269,12 +269,6 @@ Relational databases are great when secure transactions are important. Banking a
 > 10 mins
 
 ## Exploring Postgres (15 minutes / 1:25)
-
-We are learning in order to be able to read it. We'll look stuff up when we want to write it.
-
-But there have been times GA grads need to use it!
-
-![SQL](./images/screenshot_kibble.png)
 
 Start by "spotlight searching" (`command-space`) for Postgres and launching `Postgres.app`. Once you see the elephant in your Mac menu bar, you'll know Postgres is running.
 
