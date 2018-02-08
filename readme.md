@@ -283,6 +283,8 @@ help -- general help
 \?   -- help with psql commands
 \h   -- help with SQL commands
 \l   -- Lists all databases
+\q   -- exits psql
+q    -- exits a psql list or dialogue
 
 CREATE DATABASE generalassembly; -- Don't forget the semicolon!
 \l -- What changed?
@@ -458,7 +460,7 @@ the case in the real world).
 
 ![one_to_many](images/one_to_many.png)
 
-## Bonus: Joins
+## Joins
 
 To `SELECT` information on two or more tables at ones, we can use a `JOIN` clause.
 This will produce rows that contain information from both tables. When joining
