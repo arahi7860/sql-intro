@@ -4,7 +4,9 @@
 
 - Contrast relational and non-relational databases
 - Create, set up, and seed a PostgreSQL.
+- Describe how to represent relationships in SQL databases
 - Execute SQL commands to perform CRUD actions.
+- Use JOIN to combine tables in a SELECT
 
 ## Framing
 
@@ -330,6 +332,7 @@ DROP DATABASE wdi15;
 ```
 
 In short...
+
 - Backslash commands (e.g. `\l` ) are commands to navigate psql. These are psql-specific.
 - Everything else is SQL. The SQL is what actually interacts with the database.
 
@@ -348,6 +351,7 @@ In short...
 Every application's database will have one or more tables. You will recall, each table stores information about a particular model (e.g., `artists`, `songs`).
 
 Each table has a **schema**, which defines what columns it has. For each column the schema defines...
+
 - The column's name
 - the column's data type
 - Any constraints for that column
@@ -390,42 +394,131 @@ Clone down and follow the instructions in the
 
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
-### Basics of Databases, and SQL
+## Relationships in SQL / SQL JOINs
 
-#### Concepts
+One of the key features of relational databases is that they can represent relationships between rows in different tables.
 
-- Explain how a database, a database management system (DBMS) and SQL relate to one another
-- Describe a database schema and how it relates to tables, rows and columns
+Going back to our library example, we have two tables: `books` and `authors`. Our goal now is to somehow indicate the relationship between a book and an author. In this case, that relationship indicates who wrote the book.
 
-#### Mechanics
+You can imagine that we'd like to use this information in a number of ways, such as...
 
-- Create a new PostgreSQL database
-- Set up a PostgreSQL database schema with a saved SQL file
-- Seed a PostgreSQL database with a saved SQL file
-- Execute basic SQL commands to execute CRUD actions in a database
+- Getting the author information for a given book
+- Getting all books written by a given author
+- Searching for books based on attributes of the author (e.g., all books written by a Chinese author)
 
-### Relationships in SQL / SQL JOINs
+### One-to-Many (10 minutes / 2:20)
 
-- Define what a foreign key is
-- Describe how to represent a one-to-many relationship in SQL database
-- Explain how to represent one-to-one and many-to-many relationships in a SQL DB
-- Distinguish between keys, foreign keys, and indexes
-- Describe the purpose of the JOIN
-- Use JOIN to combine tables in a SELECT
-- Describe what it means for a database to be normalized
+How might we represent this information in our database? For this example,
+let's assume that each book has only one author (even though that's not always
+the case in the real world).
 
+#### Option 1 - Duplicate Info (Wrong :x:)
 
-###
+**authors**
+- name
+- nationality
+- birth_year
 
-## Framing
+**books**
+- title
+- pub_date
+- author_name
+- author_nationality
+- author_birth_year
 
-This lesson is broken down into three parts...
+<details>
+  <summary><strong>What's the problem here?</strong></summary>
 
-1. [Domain Modeling & ERDs](erd_domains.md)
-2. [Basics of Databases and SQL](sql_basics.md)
-3. [Relationships in SQL](sql_relationships.md)
+  > Duplication, difficult to keep data in sync.
 
-## Sample Quiz Questions
+</details>
+
+#### Option 2 - Array of IDs (Wrong :x:)
+
+**authors**
+- name
+- nationality
+- book_ids
+
+**books**
+- title
+- pub_date
+
+<details>
+  <summary><strong>What's the problem here?</strong></summary>
+
+  > Parsing list, can't index (for speed!)
+
+</details>
+
+#### Option 3 (Correct! :white_check_mark:)
+
+**authors**
+- name
+- nationality
+
+**books**
+- title
+- pub_date
+- author_id
+
+![one_to_many](images/one_to_many.png)
+
+## Bonus: Joins
+
+To `SELECT` information on two or more tables at ones, we can use a `JOIN` clause.
+This will produce rows that contain information from both tables. When joining
+two or more tables, we have to tell the database how to match up the rows.
+(e.g. to make sure the author information is correct for each book).
+
+This is done using the `ON` clause, which specifies which properties to match.
+
+### Writing SQL JOINS
+
+```sql
+SELECT id FROM authors where name = 'J.K. Rowling';
+SELECT * FROM books where author_id = 2;
+
+SELECT * FROM books JOIN authors ON books.author_id = authors.id;
+SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
+```
+
+## You Do: Books and Authors
+
+See advanced_queries.sql in the [library_sql](https://github.com/ga-dc/library_sql)
+exercise.
+
+## Aside: Less Common Joins
+
+There are actually a number of ways to join multiple tables with `JOIN`, if
+you're really curious, check out this article:
+
+[A visual explanation of SQL Joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/)
+
+## Bonus: Many-to-Many Relationships
+
+We're not going to go in-depth with many-to-many relationships today, but lets go over a simple example...
+
+Consider if we wanted to add a categories model (e.g. fiction, non-fiction,
+sci-fi, romance, etc). Books can belong to many categories (i.e. a book might be
+a fiction/romance, or a history/non-fiction). And a given category might have
+many books.
+
+Because of this, we can't put a book_id column on categories, nor a category_id
+column on books, either way, we might have more than one value in that field
+(a no-no in terms of performance).
+
+To solution is to create an additional table, which stores just the
+relationships between the two tables. Such a table is called a join table, and
+contains two foreign key columns.
+
+In our example, we might create a table called 'categorizations', and it would
+have a book_id and category_id. Each row would represent a specific book's
+association with a specific category.
+
+![many_to_many](images/many_to_many.png)
+
+## Closing/Questions (10 minutes)
 
 * What is the distinctive feature of a relational database?
 * How is information stored in a relational database?
