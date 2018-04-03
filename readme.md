@@ -10,111 +10,22 @@
 
 ## Framing
 
-Today we are going to introduce a new paradigm for persisting data in our applications. Previously, we have used mongoDB as our database when building node applications. In fact, there are many alternatives. In this lesson we will contrast a new database management system, **PostgreSQL** a relational database, with mongoDB a non-relational database.
+Today we are going to introduce a new (but very old) paradigm for persisting data in our applications. Previously, we have used mongoDB as our database when building node applications. In fact, there are many alternatives. In this lesson we will contrast **PostgreSQL**, a relational database, with mongoDB, a non-relational database.
 
-## Review Questions
+## What is a Relational Database? (10 min / 0:10)
 
-<details>
-<summary>What is a database and why would we use one?</summary>
-<br>
+Here's the super dense technical definition. Not required for understanding how it works unless you want to dive extremely deeply.
 
-> A database is a tool for storing data. It offers many advantages to storying in a text or binary file:
+> The relational model (RM) for database management is an approach to managing data using a structure and language consistent with first-order predicate logic, first described in 1969 by Edgar F. Codd, where all data is represented in terms of tuples, grouped into relations. A database organized in terms of the relational model is a relational database.
 
-- **Permanence:** Our data is safe and won't be altered or deleted. 
-- **Speed:** Databases are fast! They can be thousands of times faster than reading from a file.
-- **Consistency:** Databases can enforce rules that keep data uniform.
-- **Scalability:** Databases can handle lots of requests per second and many are built to scale by replicating and syncing information across multiple databases
-- **Querying:** Databases make it easy to search, sort, filter, and combine data using a Query Language.
+* https://en.wikipedia.org/wiki/Relational_model
+* https://en.wikipedia.org/wiki/Relation_(database)
 
-</details>
+What it doesn't mean: That the database has the ability to relate one value/collection/document to another. All databases (should) have that ability.
 
-<details>
-<summary>What is an ERD and why would we use one?</summary>
-<br>
+It does mean: data is stored using the _relational model_ in mathematics.
 
-> An **Entity Relationship Diagram** is a tool to visualize and describe the data and relationships of our programs.
-
-</details>
-
-<details>
-<summary>How would you visually represent a one to many relationship?</summary>
-<br>
-
-![one-to-many](images/one-to-many2.png)
-
-</details>
-
-<details>
-<summary>What is a schema?</summary>
-<br>
-
-> A schema is a blueprint of how your data is organized and how your database is structured. **It introduces consistency to our data.**
->
-> A mongoose schemas looked like this:
-```js
-const CandidateSchema = new mongoose.Schema({
-  name: String,
-  year: Number
-})
-```
-
-</details>
-
-<details>
-<summary>In what format is data in a mongoose database stored?</summary>
-<br>
-
-> Data in a non-relational database like mongodb is stored as JSON. It looks like this:
-
-```js
-{
-   "_id" : ObjectId("54c955492b7c8eb21818bd09"),
-   "address" : {
-      "street" : "2 Avenue",
-      "zipcode" : "10075",
-      "building" : "1480",
-      "coord" : [ -73.9557413, 40.7720266 ],
-   },
-   "borough" : "Manhattan",
-   "cuisine" : "Italian",
-   "grades" : [
-      {
-         "date" : ISODate("2014-10-01T00:00:00Z"),
-         "grade" : "A",
-         "score" : 11
-      },
-      {
-         "date" : ISODate("2014-01-16T00:00:00Z"),
-         "grade" : "B",
-         "score" : 17
-      }
-   ],
-   "name" : "Vella",
-   "restaurant_id" : "41704620"
-}
-```
-
-</details>
-
-## What is a Relational Database?
-
-### Data is stored in tables
-
-- tables are organized by columns and rows (imagine a spreadsheet)
-- tables are named according to what they model (e.g., `artists`, `songs`)
-- In the case of `artists`, each row represents one artist
-- Each column is called an **attribute** or **field**, such as `id`, `title`, or `birth_year`
-- users are required to create schemas before data can be stored
-
-### Queries are made via SQL (Structured Query Language)
-
-- SQL is a database language used specifically for relational databases
-- SQL is great for reliably managing complex queries
-
-### Data is related between tables
-
-- we can relate rows in the `songs` table to rows in the `artists` table
-- to relate data we use `keys` that are unique identifiers for each row of a table.
+Key takeaway: the way data is organized is fundamentally different in a RDB than in a non-relational DB (also called noSQL sometimes).
 
 ## Lets Talk Terminology
 
@@ -139,9 +50,9 @@ const CandidateSchema = new mongoose.Schema({
 - we will use one called `psql` for PostgreSQL
 - **What was the mongoose equivalent?**
 
-### Data Compared: Collections -> Tables
+## Data Compared: Collections -> Tables (10 min / 0:20)
 
-Within a mongoDB database, our data is organized in JSON objects. A collection could look like this:
+Within a mongoDB database, our data is organized in JSON-like objects. Here's an example collection:
 
 ```js
 [
@@ -150,11 +61,11 @@ Within a mongoDB database, our data is organized in JSON objects. A collection c
     "nationality" : "American",
     "songs" : [
       {
-        "songName" : "Little Red Corvet",
+        "name" : "Little Red Corvette",
         "yearReleased": 1982
       },
       {
-        "songName" : "Raspberry Beret",
+        "name" : "Raspberry Beret",
         "yearReleased": 1985
       }
     ]
@@ -164,11 +75,11 @@ Within a mongoDB database, our data is organized in JSON objects. A collection c
     "nationality" : "British",
     "songs" : [
       {
-        "songName" : "Tiny Dancer",
+        "name" : "Tiny Dancer",
         "yearReleased": 1971
       },
       {
-        "songName" : "Your Song",
+        "name" : "Your Song",
         "yearReleased": 1970
       }
     ]
@@ -178,31 +89,35 @@ Within a mongoDB database, our data is organized in JSON objects. A collection c
 
 In a relational database, this data would be stored in two tables.
 
-| artistID | artistName     | nationality |
+**artists**
+
+| id       | name           | nationality |
 |----------|----------------|-------------|
 | 1        | Prince         | American    |
 | 2        | Sir Elton John | British     |
 
-| songID | songName          | yearReleased | artistID |
-|--------|-------------------|--------------|----------|
-| 1      | Tiny Dancer       | 1971         | 2        |
-| 2      | Little Red Corvet | 1982         | 1        |
-| 3      | Raspberry Beret   | 1985         | 1        |
-| 4      | Your Song         | 1970         | 2        |
+**songs**
 
-### You Do: Database Conversion
+| id     | name                | year_released | artist_id |
+|--------|---------------------|---------------|-----------|
+| 1      | Tiny Dancer         | 1971          | 2         |
+| 2      | Little Red Corvette | 1982          | 1         |
+| 3      | Raspberry Beret     | 1985          | 1         |
+| 4      | Your Song           | 1970          | 2         |
 
-> 8 mins / 2 mins
+See also: [Naming style guide](http://www.sqlstyle.guide/).
 
-Find a partner and think of a shared interest that can be used to demonstrate a one-to-many relationship like the example above. Find a space to whiteboard and create sample JSON data. Then create tables to represent the same data as it would appear in a SQL database.
+Note: there's no definitive naming convention for SQL databases. It's far more important to be consistent across your db. I'm in the "plural table names and singular column names" camp
 
-## Relational vs Non-Relational | PostgreSQL vs MongoDB
+### You Do: Database Conversion (10 min / 0:30)
 
-Non-Relational or *noSQL* databases have existed in some form for decades, however their use didn't become wide spread until recently. noSQL databases became an important alternative to relational databases in the early 2000s as companies like Facebook, Google, and Amazon's data storage needs changed and expanded. With the rise of social media and online marketplaces like eBay, the amount of data on the internet boomed. User were not only getting information from the internet, they were contributing to it. This transition stressed the capabilities of relational databases due to the volume and variability of user-generated data.
+Find a partner and think of a shared interest that can be used to demonstrate a one-to-many relationship like the example above. Use a model from a previous project if you need some inspiration. Find a space to whiteboard and create sample JSON data. Then create tables to represent the same data as it would appear in a SQL database.
 
-noSQL databases **historically and generally** offer more flexibility and scalability than traditional relational databases. However, they come with the cost of reduced consistency.
+## Relational vs Non-Relational | PostgreSQL vs MongoDB (15 min / 0:45)
 
-> **NOTE: Many of the distinctions between relational and non-relational databases are becoming blurred.** While relational and noSQL databases have fundamental differences and each have pros and cons, modern technology is bridging the gap through innovations that combat the weaknesses of each model.
+Non-Relational or **noSQL** databases have existed in some form for decades, however their use didn't become wide spread until recently. noSQL databases became an important alternative to relational databases in the early 2000s as internet tech companies' data storage needs changed and expanded. With the rise of social media and online marketplaces like eBay, the amount of data on the internet boomed. User were not only getting information from the internet, they were contributing to it. This transition stressed the capabilities of relational databases due to the volume and variability of user-generated data.
+
+noSQL databases **generally** offer more flexibility and scalability than traditional relational databases. However, they come with the cost of reduced consistency.
 
 ### MongoDB is non-relational (noSQL)
 
@@ -212,49 +127,38 @@ MongoDB is document based. Meaning, data is organized in collections of related 
 
 ##### Usability
 
-- Documents (i.e. objects) correspond to native data types in many programming languages
-- Schema-less, documents can contain data that is variable, no need for migrations
+- Documents (i.e. JSON objects) correspond to native data types in many programming languages (like mongo + JSON)
+- Documents can contain data that is variable, no need for migrations
 
 ##### High Performance
 
 - Documents can be embedded in one another reducing the need for joins.
 - Simple queries are very fast
 
-##### High Availability
-
-MongoDB's uses replica sets by default
-
-- automatic failover, if data is mistakenly destroyed, it's backed up elsewhere
-- data redundancy can increase speed of read requests
-
-##### Automatic Scaling
-
-- Sharding distributes data across a cluster of servers
-- Replica sets provide low-latency high-throughput deployments
-
 ### PostgreSQL is relational (SQL)
 
+PostgreSQL is a relational database management system. There are many others like MySQL, MS SQL, Oracle, and sqlite. They are all queried using SQL.
+
 #### Key Advantages
-
-PostgreSQL is a relational database management system. There are many others like MySQL and SQLite. They are all queried using SQL. In a relational database, data is stored in tables.
-
-##### SQL
-
-- SQL is used in most relational databases meaning interaction across different relational DBMS is very similar
-- SQL is well documented and robust in its utility
-- SQL allows you to create dynamic relationships between tables through joins
 
 ##### Consistency
 
 - a lot of data is tabular already, relational databases store it in a similar form
 - Schemas mean you know exactly what attributes (columns) for each database entry (row)
 - Schemas can check the type of data being stored to ensure data coming in is properly formated and consistent with other entries.
+- writes to a database follow ACID paradigm (atomicity, consistency, isolation, durability). More about [ACID](https://en.wikipedia.org/wiki/ACID)
 
-##### Security
+##### SQL
 
-- data is centrally stored so there is no inconsistency across servers
-- strict schemas protect against unwanted or malicious entries
-- able to comply with ACID (atomicity, consistency, isolation, durability) properties
+- SQL is used in most relational databases meaning interaction across different relational DBMS is very similar
+- SQL is well documented and extremely robust in its utility
+- SQL allows you to create dynamic relationships between tables through joins
+
+#### Both offer:
+
+##### Automatic Scaling
+- Sharding distributes data across a cluster of servers
+- Replica sets provide low-latency high-throughput deployments
 
 ### So which is better?
 
@@ -264,17 +168,15 @@ In general, noSQL databases are great for unstructured, inconsistent, or frequen
 
 Relational databases are great when secure transactions are important. Banking applications may prefer the rigidity of SQL databases to monitor account data and transactions. Relational databases are also good at managing inventories and tracking deliveries. ACID compliance ensures that a process is finished to completion or not at all. You'll never lose a package or find it in two places.
 
-## BREAK
+## Make sure Postgres.app is installed
 
-> 10 mins
-
-## Exploring Postgres (15 minutes / 1:25)
+## Exploring Postgres (20 minutes / 1:05)
 
 Start by "spotlight searching" (`command-space`) for Postgres and launching `Postgres.app`. Once you see the elephant in your Mac menu bar, you'll know Postgres is running.
 
 ### psql commands
 
-We'll use `psql` as our primary means of interacting with our databases. Later on we'll use Ruby or server-side Javascript to do so in our programs.
+We'll use `psql` as our primary means of interacting with our databases. This is our CLI. Later on we'll use Ruby or server-side Javascript to do so in our programs. 
 
 Here's a quick demo. I recommend just watching and taking notes for this part. Don't try to code along.
 
@@ -322,7 +224,9 @@ SELECT * FROM students;
 
 DROP TABLE students; -- "drop" means to delete an entire table or database
 
-DROP DATABASE wdi15;
+\d
+
+DROP DATABASE generalassembly;
 
 \q --quits
 ```
@@ -331,22 +235,22 @@ In short...
 
 - Backslash commands (e.g. `\l` ) are commands to navigate psql. These are psql-specific.
 - Everything else is SQL. The SQL is what actually interacts with the database.
+- SQL can be verbose, so you can write multiple lines in the terminal. Make sure you terminate your command with `;` always.
 
 > If you're curious as to where exactly your databases are being stored locally, enter `SHOW data_directory;` while in psql.
 
 ### SQL Syntax
 
-- All statements end in a semicolon
-- Whitespace doesn't matter
+- Whitespace doesn't matter (unless it splits up a word)
 - Uppercasing
 - Always use single quotes when typing out string values
-- [Ye olde style guide](http://leshazlewood.com/software-engineering/sql-style-guide/)
+- Example style guide [here](http://www.sqlstyle.guide/)
 
-## Schema (10 minutes / 1:35)
+## Schema (10 minutes / 1:15)
 
 Every application's database will have one or more tables. You will recall, each table stores information about a particular model (e.g., `artists`, `songs`).
 
-Each table has a **schema**, which defines what columns it has. For each column the schema defines...
+Each table has a **schema**, which defines and enforces what columns it has. For each column the schema defines...
 
 - The column's name
 - the column's data type
@@ -356,41 +260,40 @@ Each table has a **schema**, which defines what columns it has. For each column 
 
 Here are some common data types for SQL databases. They are all, for the most part, things you've seen before...
 
-- Boolean
-- Integer
-- Float
-- Text / VARCHAR
-  - VARCHAR is short, TEXT is long
-- NULL
-- Date
-- Time
+- boolean
+- integer
+- float
+- text / VARCHAR
+  - VARCHAR is limited length, TEXT is unlimited
+- date
+- time
 
-> [And many more...](http://www.postgresql.org/docs/9.3/interactive/datatype.html)
+> [And many more...](https://www.postgresql.org/docs/9.5/static/datatype.html)
 
 ### Constraints
 
 Constraints act as limits on the data that can go in a column.
 - e.g., `NOT NULL` and `UNIQUE`
 
-> [And many more...](http://www.postgresql.org/docs/8.1/static/ddl-constraints.html)
+> [And many more...](https://www.postgresql.org/docs/9.5/static/ddl-constraints.html)
 
 ### Defining a Schema
 
 Next we're going to build a schema for a database in a sample application. It can change later on if we need to add / remove tables or columns, but we'll start with something simple.
 
-Instead of typing this into `psql`, we're going to do so by saving the schema to a `.sql` file and run it, just like we have with `.js` and `.rb` files.
-## You Do: Building Our Database (15 minutes / 1:50)
+Instead of typing this into `psql`, you can write to a `.sql` file and run it, just like we have with `.js` and `.rb` files.
 
-> 15 minutes exercise. 5 minutes review.
+## BREAK (10 min / 1:25)
+
+## We Do: Building Our Database (10 min / 1:35)
 
 Clone down and follow the instructions in the
 [library SQL Exercise repo](https://github.com/ga-wdi-exercises/library_sql).
 
-## You Do: Basic SQL Queries (20 minutes / 2:10)
-
+## You Do: Basic SQL Queries (15 min / 1:50)
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
-## Relationships in SQL / SQL JOINs
+## Relationships in SQL / SQL JOINs (20 min / 2:10)
 
 One of the key features of relational databases is that they can represent relationships between rows in different tables.
 
@@ -402,61 +305,11 @@ You can imagine that we'd like to use this information in a number of ways, such
 - Getting all books written by a given author
 - Searching for books based on attributes of the author (e.g., all books written by a Chinese author)
 
-### One-to-Many (10 minutes / 2:20)
+### One-to-Many
 
 How might we represent this information in our database? For this example,
 let's assume that each book has only one author (even though that's not always
 the case in the real world).
-
-#### Option 1 - Duplicate Info (Wrong :x:)
-
-**authors**
-- name
-- nationality
-- birth_year
-
-**books**
-- title
-- pub_date
-- author_name
-- author_nationality
-- author_birth_year
-
-<details>
-  <summary><strong>What's the problem here?</strong></summary>
-
-  > Duplication, difficult to keep data in sync.
-
-</details>
-
-#### Option 2 - Array of IDs (Wrong :x:)
-
-**authors**
-- name
-- nationality
-- book_ids
-
-**books**
-- title
-- pub_date
-
-<details>
-  <summary><strong>What's the problem here?</strong></summary>
-
-  > Parsing list, can't index (for speed!)
-
-</details>
-
-#### Option 3 (Correct! :white_check_mark:)
-
-**authors**
-- name
-- nationality
-
-**books**
-- title
-- pub_date
-- author_id
 
 ![one_to_many](images/one_to_many.png)
 
@@ -479,7 +332,7 @@ SELECT * FROM books JOIN authors ON books.author_id = authors.id;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
 ```
 
-## You Do: Books and Authors
+## You Do: Books and Authors (15 min / 2:25)
 
 See advanced_queries.sql in the [library_sql](https://github.com/ga-dc/library_sql)
 exercise.
@@ -514,18 +367,19 @@ association with a specific category.
 
 ![many_to_many](images/many_to_many.png)
 
-## Closing/Questions (10 minutes)
+## Closing/Questions (5 min / 2:30)
 
 * What is the distinctive feature of a relational database?
 * How is information stored in a relational database?
 * What are the different types of relations that exist in a relational database?
 * How do we indicate a one-to-many relationship in a database?
 
-## Homework: [NBA Stats](https://github.com/ga-wdi-exercises/nba_stats)
+<!-- ## Homework: [NBA Stats](https://github.com/ga-wdi-exercises/nba_stats)
+ -->
 
 ## Practice
 
-The following two resources are a great way to gain further familiarity with SQL. We fully expect this to be a challenge. If you're struggling on the homework, watch the Code School course on SQL and try the SQL for Beginners exercises before trying to finish the homework:
+The following resources are a great way to gain further familiarity with SQL. We fully expect this to be a challenge. 
 
 - [Code School Try SQL](https://www.codeschool.com/courses/try-sql)
 - [SQL for Beginners](https://www.codewars.com/collections/sql-for-beginners/): Created by WDI14 graduate and current GA instructor Mike Nabil.
