@@ -1,6 +1,6 @@
 # SQL
 
-## Learning Objectives
+## Learning Objectives - James
 
 - Contrast relational and non-relational databases
 - Create, set up, and seed a PostgreSQL database.
@@ -8,11 +8,11 @@
 - Describe how to represent relationships in SQL databases
 - Use JOIN to combine tables in a SELECT
 
-## Framing
+## Framing - James
 
 Today we are going to introduce a new (but very old) paradigm for persisting data in our applications. Previously, we have used mongoDB as our database when building node applications. In fact, there are many alternatives. In this lesson we will contrast **PostgreSQL**, a relational database, with mongoDB, a non-relational database.
 
-## What is a Relational Database? (10 min / 0:10)
+## What is a Relational Database? (10 min / 0:10) - Ali
 
 Here's the super dense technical definition. Not required for understanding how it works unless you want to dive extremely deeply.
 
@@ -27,7 +27,7 @@ It does mean: data is stored using the _relational model_ in mathematics.
 
 Key takeaway: the way data is organized is fundamentally different in a RDB than in a non-relational DB (also called noSQL sometimes).
 
-## Lets Talk Terminology
+## Lets Talk Terminology - James
 
 ![SQL vs noSQL comparison](images/SQL-MongoDB-comparison.png)
 
@@ -50,7 +50,7 @@ Key takeaway: the way data is organized is fundamentally different in a RDB than
 - we will use one called `psql` for PostgreSQL
 - **What was the mongoose equivalent?**
 
-## Data Compared: Collections -> Tables (10 min / 0:20)
+## Data Compared: Collections -> Tables (10 min / 0:20) - Ali
 
 Within a mongoDB database, our data is organized in JSON-like objects. Here's an example collection:
 
@@ -109,17 +109,17 @@ See also: [Naming style guide](http://www.sqlstyle.guide/).
 
 Note: there's no definitive naming convention for SQL databases. It's far more important to be consistent across your db. I'm in the "plural table names and singular column names" camp
 
-### You Do: Database Conversion (10 min / 0:30)
+### You Do: Database Conversion (10 min / 0:30) - James
 
 Find a partner and think of a shared interest that can be used to demonstrate a one-to-many relationship like the example above. Use a model from a previous project if you need some inspiration. Find a space to whiteboard and create sample JSON data. Then create tables to represent the same data as it would appear in a SQL database.
 
-## Relational vs Non-Relational | PostgreSQL vs MongoDB (15 min / 0:45)
+## Relational vs Non-Relational | PostgreSQL vs MongoDB (15 min / 0:45) - Ali
 
 Non-Relational or **noSQL** databases have existed in some form for decades, however their use didn't become wide spread until recently. noSQL databases became an important alternative to relational databases in the early 2000s as internet tech companies' data storage needs changed and expanded. With the rise of social media and online marketplaces like eBay, the amount of data on the internet boomed. User were not only getting information from the internet, they were contributing to it. This transition stressed the capabilities of relational databases due to the volume and variability of user-generated data.
 
 noSQL databases **generally** offer more flexibility and scalability than traditional relational databases. However, they come with the cost of reduced consistency.
 
-### MongoDB is non-relational (noSQL)
+### MongoDB is non-relational (noSQL) - James
 
 MongoDB is document based. Meaning, data is organized in collections of related documents formatted in JSON.
 
@@ -160,7 +160,7 @@ PostgreSQL is a relational database management system. There are many others lik
 - Sharding distributes data across a cluster of servers
 - Replica sets provide low-latency high-throughput deployments
 
-### So which is better?
+### So which is better? - Ali
 
 **Sorry, there's no easy answer.** While relational and non-relational databases have some key differences on paper, popular database management systems are evolving rapidly to meet the needs of a variety of users. You can likely accomplish the same goals with either a SQL or noSQL database.
 
@@ -170,7 +170,7 @@ Relational databases are great when secure transactions are important. Banking a
 
 ## Make sure Postgres.app is installed
 
-## Exploring Postgres (20 minutes / 1:05)
+## Exploring Postgres (20 minutes / 1:05) - James
 
 Start by "spotlight searching" (`command-space`) for Postgres and launching `Postgres.app`. Once you see the elephant in your Mac menu bar, you'll know Postgres is running.
 
@@ -239,14 +239,14 @@ In short...
 
 > If you're curious as to where exactly your databases are being stored locally, enter `SHOW data_directory;` while in psql.
 
-### SQL Syntax
+### SQL Syntax - Ali
 
 - Whitespace doesn't matter (unless it splits up a word)
 - Uppercasing
 - Always use single quotes when typing out string values
 - Example style guide [here](http://www.sqlstyle.guide/)
 
-## Schema (10 minutes / 1:15)
+## Schema (10 minutes / 1:15) - James
 
 Every application's database will have one or more tables. You will recall, each table stores information about a particular model (e.g., `artists`, `songs`).
 
@@ -256,7 +256,7 @@ Each table has a **schema**, which defines and enforces what columns it has. For
 - the column's data type
 - Any constraints for that column
 
-### Common Data Types
+### Common Data Types - Ali
 
 Here are some common data types for SQL databases. They are all, for the most part, things you've seen before...
 
@@ -270,14 +270,14 @@ Here are some common data types for SQL databases. They are all, for the most pa
 
 > [And many more...](https://www.postgresql.org/docs/9.5/static/datatype.html)
 
-### Constraints
+### Constraints - James
 
 Constraints act as limits on the data that can go in a column.
 - e.g., `NOT NULL` and `UNIQUE`
 
 > [And many more...](https://www.postgresql.org/docs/9.5/static/ddl-constraints.html)
 
-### Defining a Schema
+### Defining a Schema - Ali
 
 Next we're going to build a schema for a database in a sample application. It can change later on if we need to add / remove tables or columns, but we'll start with something simple.
 
@@ -285,15 +285,15 @@ Instead of typing this into `psql`, you can write to a `.sql` file and run it, j
 
 ## BREAK (10 min / 1:25)
 
-## We Do: Building Our Database (10 min / 1:35)
+## We Do: Building Our Database (10 min / 1:35) - James
 
 Clone down and follow the instructions in the
 [library SQL Exercise repo](https://github.com/ga-wdi-exercises/library_sql).
 
-## You Do: Basic SQL Queries (15 min / 1:50)
+## You Do: Basic SQL Queries (15 min / 1:50) - Ali
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
-## Relationships in SQL / SQL JOINs (20 min / 2:10)
+## Relationships in SQL / SQL JOINs (20 min / 2:10) - James
 
 One of the key features of relational databases is that they can represent relationships between rows in different tables.
 
@@ -313,7 +313,7 @@ the case in the real world).
 
 ![one_to_many](images/one_to_many.png)
 
-## Joins
+## Joins - Ali
 
 To `SELECT` information on two or more tables at ones, we can use a `JOIN` clause.
 This will produce rows that contain information from both tables. When joining
@@ -332,7 +332,7 @@ SELECT * FROM books JOIN authors ON books.author_id = authors.id;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
 ```
 
-## You Do: Books and Authors (15 min / 2:25)
+## You Do: Books and Authors (15 min / 2:25)- James
 
 See advanced_queries.sql in the [library_sql](https://github.com/ga-dc/library_sql)
 exercise.
@@ -344,7 +344,7 @@ you're really curious, check out this article:
 
 [A visual explanation of SQL Joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/)
 
-## Bonus: Many-to-Many Relationships
+## Bonus: Many-to-Many Relationships - Ali
 
 We're not going to go in-depth with many-to-many relationships today, but lets go over a simple example...
 
@@ -367,7 +367,7 @@ association with a specific category.
 
 ![many_to_many](images/many_to_many.png)
 
-## Closing/Questions (5 min / 2:30)
+## Closing/Questions (5 min / 2:30) - James
 
 * What is the distinctive feature of a relational database?
 * How is information stored in a relational database?
