@@ -176,7 +176,7 @@ Start by "spotlight searching" (`command-space`) for Postgres and launching `Pos
 
 ### psql commands
 
-We'll use `psql` as our primary means of interacting with our databases. This is our CLI. Later on we'll use Ruby or server-side Javascript to do so in our programs. 
+We'll use `psql` as our primary means of interacting with our databases. This is our CLI. Later on we'll use Python or server-side Javascript to do so in our programs. 
 
 Here's a quick demo. I recommend just watching and taking notes for this part. Don't try to code along.
 
