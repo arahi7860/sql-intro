@@ -1,6 +1,6 @@
 # SQL
 
-## Learning Objectives - James
+## Learning Objectives
 
 - Contrast relational and non-relational databases
 - Create, set up, and seed a PostgreSQL database.
@@ -8,7 +8,7 @@
 - Describe how to represent relationships in SQL databases
 - Use JOIN to combine tables in a SELECT
 
-## Framing - James
+## Framing
 
 Today we are going to introduce a new (but very old) paradigm for persisting data in our applications. Previously, we have used mongoDB as our database when building node applications. In fact, there are many alternatives. In this lesson we will contrast **PostgreSQL**, a relational database, with mongoDB, a non-relational database.
 
