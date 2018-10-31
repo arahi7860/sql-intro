@@ -121,7 +121,7 @@ Non-Relational or **noSQL** databases have existed in some form for decades, how
 
 noSQL databases **generally** offer more flexibility and scalability than traditional relational databases. However, they come with the cost of reduced consistency.
 
-### MongoDB is non-relational (noSQL) - James
+### MongoDB is non-relational (noSQL)
 
 MongoDB is document based. Meaning, data is organized in collections of related documents formatted in JSON.
 
@@ -352,7 +352,7 @@ you're really curious, check out this article:
 
 [A visual explanation of SQL Joins](http://blog.codinghorror.com/a-visual-explanation-of-sql-joins/)
 
-## Bonus: Many-to-Many Relationships - Ali
+## Bonus: Many-to-Many Relationships
 
 We're not going to go in-depth with many-to-many relationships today, but lets go over a simple example...
 
@@ -375,7 +375,7 @@ association with a specific category.
 
 ![many_to_many](images/many_to_many.png)
 
-## Closing/Questions (5 min / 2:30) - James
+## Closing/Questions (5 min / 2:30)
 
 - What is the distinctive feature of a relational database?
 - How is information stored in a relational database?
