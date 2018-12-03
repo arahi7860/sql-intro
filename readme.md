@@ -1,19 +1,32 @@
+[![General Assembly Logo](https://camo.githubusercontent.com/1a91b05b8f4d44b5bbfb83abac2b0996d8e26c92/687474703a2f2f692e696d6775722e636f6d2f6b6538555354712e706e67)](https://generalassemb.ly/education/web-development-immersive)
+
 # SQL
 
-## Learning Objectives
+It's time to learn our second database format! SQL is an older form of database
+management. Despite it's age, it's still one of the most common and popular
+forms of data storage in building web applications - we're going to use it when
+we start learning Django!
 
-- Contrast relational and non-relational databases
-- Create, set up, and seed a PostgreSQL database.
-- Execute SQL commands to perform CRUD actions.
-- Describe how to represent relationships in SQL databases
-- Use JOIN to combine tables in a SELECT
+## Prerequisites
 
-## Framing
+* None!
+
+## Objectives
+
+By the end of this, developers should be able to:
+
+* Contrast relational and non-relational databases
+* Create, set up, and seed a PostgreSQL database.
+* Execute SQL commands to perform CRUD actions.
+* Describe how to represent relationships in SQL databases
+* Use JOIN to combine tables in a SELECT
+
+## Introduction
 
 Today we are going to introduce a new (but very old) paradigm for persisting
-data in our applications. Previously, we have used mongoDB as our database when
+data in our applications. Previously, we have used MongoDB as our database when
 building node applications. In fact, there are many alternatives. In this lesson
-we will contrast **PostgreSQL**, a relational database, with mongoDB, a
+we will contrast PostgreSQL, a relational database, with MongoDB, a
 non-relational database.
 
 ## What is a Relational Database? (10 min / 0:10)
@@ -31,7 +44,8 @@ it works unless you want to dive extremely deeply.
 - https://en.wikipedia.org/wiki/Relation_(database)
 
 What it doesn't mean: That the database has the ability to relate one
-value/collection/document to another. All databases (should) have that ability. In mongoDB, we can use refs or directly embed schemas into other schemas.
+value/collection/document to another. All databases (should) have that ability.
+In MongoDB, we can use refs or directly embed schemas into other schemas.
 
 It does mean: data is stored using the _relational model_ in mathematics.
 
@@ -51,7 +65,7 @@ in a non-relational DB (also called noSQL sometimes).
 - With relational databases, we use SQL
 - There isn't a standard language across noSQL databases
 
-> What language do we use to interface with mongoDB?
+> What language do we use to interface with MongoDB?
 
 **Database Management System (DBMS):** The software that lets a user interact
 (query) the data in a database
@@ -63,11 +77,11 @@ in a non-relational DB (also called noSQL sometimes).
 database from the command line
 
 - we will use one called `psql` for PostgreSQL
-- **What was the mongoDB equivalent?**
+- **What was the MongoDB equivalent?**
 
 ## Data Compared: Collections -> Tables (10 min / 0:20)
 
-Within a mongoDB database, our data is organized in JSON-like objects. Here's an
+Within a MongoDB database, our data is organized in JSON-like objects. Here's an
 example collection:
 
 ```js
@@ -382,11 +396,11 @@ Our goal now is to somehow indicate the relationship between a book and an
 author. In this case, that relationship indicates who wrote the book.
 
 You can imagine that we'd like to use this information in a number of ways, such
-as...
+as:
 
-- Getting the author information for a given book
-- Getting all books written by a given author
-- Searching for books based on attributes of the author (e.g., all books written
+* Getting the author information for a given book
+* Getting all books written by a given author
+* Searching for books based on attributes of the author (e.g., all books written
   by a Chinese author)
 
 ### One-to-Many
@@ -432,7 +446,7 @@ you're really curious, check out this article:
 ## Bonus: Many-to-Many Relationships
 
 We're not going to go in-depth with many-to-many relationships today, but lets
-go over a simple example...
+go over a simple example:
 
 Consider if we wanted to add a categories model (e.g. fiction, non-fiction,
 sci-fi, romance, etc). Books can belong to many categories (i.e. a book might be
@@ -455,13 +469,10 @@ association with a specific category.
 
 ## Closing/Questions (5 min / 2:30)
 
-- What is the distinctive feature of a relational database?
-- How is information stored in a relational database?
-- What are the different types of relations that exist in a relational database?
-- How do we indicate a one-to-many relationship in a database?
-
-<!-- ## Homework: [NBA Stats](https://github.com/ga-wdi-exercises/nba_stats)
- -->
+* What is the distinctive feature of a relational database?
+* How is information stored in a relational database?
+* What are the different types of relations that exist in a relational database?
+* How do we indicate a one-to-many relationship in a database?
 
 ## Practice
 
@@ -470,16 +481,22 @@ fully expect this to be a challenge.
 
 - [Code School Try SQL](https://www.codeschool.com/courses/try-sql)
 - [SQL for Beginners](https://www.codewars.com/collections/sql-for-beginners/):
-  Created by WDI14 graduate and current GA instructor Mike Nabil.
+  Created by WDI14 graduate.
 - [The official PostgreSQL Documentation](https://www.postgresql.org/docs/9.3/static/index.html)
   is also very good, in particular:
   - [The preface](https://www.postgresql.org/docs/9.3/static/preface.html)
   - [The official tutorial](https://www.postgresql.org/docs/9.3/static/tutorial.html)
   - [The overview of SQL](https://www.postgresql.org/docs/9.3/static/sql.html)
 
-## Additional Practice
+## Additional Resources
 
-- [Postgres Guide](http://postgresguide.com/)
-- [SQL Zoo](https://sqlzoo.net/)
-- [W3 Schools SQL tutorial](https://www.w3schools.com/sql/)
-- [SQL Course](http://www.sqlcourse.com/)
+* [Postgres Guide](http://postgresguide.com/)
+* [SQL Zoo](https://sqlzoo.net/)
+* [W3 Schools SQL tutorial](https://www.w3schools.com/sql/)
+* [SQL Course](http://www.sqlcourse.com/)
+
+## [License](LICENSE)
+
+1. All content is licensed under a CC­BY­NC­SA 4.0 license.
+1. All software code is licensed under GNU GPLv3. For commercial use or
+    alternative licensing, please contact legal@ga.co.
