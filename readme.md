@@ -316,7 +316,8 @@ In short...
 
 - Backslash commands (e.g. `\l` ) are commands to navigate psql. These are
   psql-specific.
-- Everything else is SQL. The SQL is what actually runs commands & interacts with the database.
+- Everything else is SQL. The SQL is what actually runs commands & interacts
+  with the database.
 - SQL can be verbose, so you can write multiple lines in the terminal. Make sure
   you terminate your command with `;` always.
 
@@ -415,15 +416,16 @@ as:
 - Searching for books based on attributes of the author (e.g., all books written
   by a Chinese author)
 
-
-#### Option 1 - Duplicate Info 
+#### Option 1 - Duplicate Info
 
 **authors**
+
 - name
 - nationality
 - birth_year
 
 **books**
+
 - title
 - pub_date
 - author_name
@@ -433,35 +435,39 @@ as:
 <details>
   <summary><strong>What's the problem here?</strong></summary>
 
-  > Duplication, difficult to keep data in sync.
+> Duplication, difficult to keep data in sync.
 
 </details>
 
 #### Option 2 - Array of IDs
 
 **authors**
+
 - name
 - nationality
 - book_ids
 
 **books**
+
 - title
 - pub_date
 
 <details>
   <summary><strong>What's the problem here?</strong></summary>
 
-  > Parsing list, can't index (for speed!)
+> Parsing list, can't index (for speed!)
 
 </details>
 
 #### Option 3
 
 **authors**
+
 - name
 - nationality
 
 **books**
+
 - title
 - pub_date
 - author_id
@@ -487,7 +493,7 @@ SELECT * FROM books JOIN authors ON books.author_id = authors.id;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
 ```
 
-## You Do: Books and Authors (15 min / 2:25)- James
+## You Do: Books and Authors (15 min / 2:25)
 
 See advanced_queries.sql in the
 [library_sql](https://git.generalassemb.ly/dc-wdi-python-django/library_sql)
