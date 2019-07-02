@@ -85,35 +85,35 @@ Within a MongoDB database, our data is organized in JSON-like objects. Here's an
 example collection:
 
 ```js
-;[
-	{
-		artistName: "Prince",
-		nationality: "American",
-		songs: [
-			{
-				name: "Little Red Corvette",
-				yearReleased: 1982
-			},
-			{
-				name: "Raspberry Beret",
-				yearReleased: 1985
-			}
-		]
-	},
-	{
-		artistName: "Sir Elton John",
-		nationality: "British",
-		songs: [
-			{
-				name: "Tiny Dancer",
-				yearReleased: 1971
-			},
-			{
-				name: "Your Song",
-				yearReleased: 1970
-			}
-		]
-	}
+[
+  {
+    artistName: "Prince",
+    nationality: "American",
+    songs: [
+      {
+        name: "Little Red Corvette",
+        yearReleased: 1982
+      },
+      {
+        name: "Raspberry Beret",
+        yearReleased: 1985
+      }
+    ]
+  },
+  {
+    artistName: "Sir Elton John",
+    nationality: "British",
+    songs: [
+      {
+        name: "Tiny Dancer",
+        yearReleased: 1971
+      },
+      {
+        name: "Your Song",
+        yearReleased: 1970
+      }
+    ]
+  }
 ]
 ```
 
