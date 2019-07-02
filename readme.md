@@ -9,17 +9,17 @@ we start learning Django!
 
 ## Prerequisites
 
-* None!
+- None!
 
 ## Objectives
 
 By the end of this, developers should be able to:
 
-* Contrast relational and non-relational databases
-* Create, set up, and seed a PostgreSQL database.
-* Execute SQL commands to perform CRUD actions.
-* Describe how to represent relationships in SQL databases
-* Use JOIN to combine tables in a SELECT
+- Contrast relational and non-relational databases
+- Create, set up, and seed a PostgreSQL database.
+- Execute SQL commands to perform CRUD actions.
+- Describe how to represent relationships in SQL databases
+- Use JOIN to combine tables in a SELECT
 
 ## Introduction
 
@@ -85,35 +85,35 @@ Within a MongoDB database, our data is organized in JSON-like objects. Here's an
 example collection:
 
 ```js
-[
-  {
-    artistName: "Prince",
-    nationality: "American",
-    songs: [
-      {
-        name: "Little Red Corvette",
-        yearReleased: 1982
-      },
-      {
-        name: "Raspberry Beret",
-        yearReleased: 1985
-      }
-    ]
-  },
-  {
-    artistName: "Sir Elton John",
-    nationality: "British",
-    songs: [
-      {
-        name: "Tiny Dancer",
-        yearReleased: 1971
-      },
-      {
-        name: "Your Song",
-        yearReleased: 1970
-      }
-    ]
-  }
+;[
+	{
+		artistName: "Prince",
+		nationality: "American",
+		songs: [
+			{
+				name: "Little Red Corvette",
+				yearReleased: 1982
+			},
+			{
+				name: "Raspberry Beret",
+				yearReleased: 1985
+			}
+		]
+	},
+	{
+		artistName: "Sir Elton John",
+		nationality: "British",
+		songs: [
+			{
+				name: "Tiny Dancer",
+				yearReleased: 1971
+			},
+			{
+				name: "Your Song",
+				yearReleased: 1970
+			}
+		]
+	}
 ]
 ```
 
@@ -149,14 +149,14 @@ project if you need some inspiration. Find a space to whiteboard or draw on
 paper and create sample JSON data. Then create tables to represent the same data
 as it would appear in a SQL database.
 
-## Relational vs Non-Relational | PostgreSQL vs MongoDB (15 min / 0:45)
+## Relational vs Non-Relational | PostgreSQL vs MongoDB (10 min / 0:40)
 
 Non-Relational or **noSQL** databases have existed in some form for decades,
 however their use didn't become wide spread until recently. noSQL databases
 became an important alternative to relational databases in the early 2000s as
 internet tech companies' data storage needs changed and expanded. With the rise
 of social media and online marketplaces like eBay, the amount of data on the
-internet boomed. User were not only getting information from the internet, they
+internet boomed. Users were not only getting information from the internet, they
 were contributing to it. This transition stressed the capabilities of relational
 databases due to the volume and variability of user-generated data.
 
@@ -238,7 +238,7 @@ completion or not at all. You'll never lose a package or find it in two places.
 
 ## Make sure Postgres.app is installed
 
-## Exploring Postgres CLI (20 minutes / 1:05)
+## Exploring Postgres CLI (20 minutes / 1:00)
 
 Start by "spotlight searching" (`command-space`) for Postgres and launching
 `Postgres.app`. Once you see the elephant in your Mac menu bar, you'll know
@@ -316,7 +316,7 @@ In short...
 
 - Backslash commands (e.g. `\l` ) are commands to navigate psql. These are
   psql-specific.
-- Everything else is SQL. The SQL is what actually interacts with the database.
+- Everything else is SQL. The SQL is what actually runs commands & interacts with the database.
 - SQL can be verbose, so you can write multiple lines in the terminal. Make sure
   you terminate your command with `;` always.
 
@@ -331,7 +331,21 @@ In short...
 - Always use single quotes when typing out string values
 - Example style guide [here](http://www.sqlstyle.guide/)
 
-## Schema (10 minutes / 1:15)
+```sql
+-- gets all values from a table
+SELECT * FROM table_name;
+
+-- gets two columns from a table
+SELECT column_name, other_column FROM table_name;
+
+-- gets two columns from a table if a certain critera is true
+SELECT column_name, other_column FROM table_name WHERE some_value > 100;
+
+-- gets two columns from a table if a certain critera is true, only returning 10 records, in descending order
+SELECT column_name, other_column FROM table_name WHERE value > 100 LIMIT 10 ORDER BY DESC ;
+```
+
+## Schema (10 minutes / 1:10)
 
 Every application's database will have one or more tables. You will recall, each
 table stores information about a particular model (e.g., `artists`, `songs`).
@@ -375,16 +389,14 @@ start with something simple.
 Instead of typing this into `psql`, you can write to a `.sql` file and run it,
 just like we have with `.js` and `.rb` files.
 
-## BREAK (10 min / 1:25)
-
-## We Do: Building Our Database (10 min / 1:35)
+## We Do: Building Our Database & Basic Queries (30 min / 1:40)
 
 Clone down and follow the instructions in the
 [library SQL Exercise repo](https://git.generalassemb.ly/dc-wdi-python-django/library_sql).
 
-## You Do: Basic SQL Queries (15 min / 1:50)
-
 Complete the queries in `basic_queries.sql` in the library_sql repo.
+
+## BREAK (10 min / 1:50)
 
 ## Relationships in SQL / SQL JOINs (20 min / 2:10)
 
@@ -398,16 +410,61 @@ author. In this case, that relationship indicates who wrote the book.
 You can imagine that we'd like to use this information in a number of ways, such
 as:
 
-* Getting the author information for a given book
-* Getting all books written by a given author
-* Searching for books based on attributes of the author (e.g., all books written
+- Getting the author information for a given book
+- Getting all books written by a given author
+- Searching for books based on attributes of the author (e.g., all books written
   by a Chinese author)
 
-### One-to-Many
 
-How might we represent this information in our database? For this example, let's
-assume that each book has only one author (even though that's not always the
-case in the real world).
+#### Option 1 - Duplicate Info 
+
+**authors**
+- name
+- nationality
+- birth_year
+
+**books**
+- title
+- pub_date
+- author_name
+- author_nationality
+- author_birth_year
+
+<details>
+  <summary><strong>What's the problem here?</strong></summary>
+
+  > Duplication, difficult to keep data in sync.
+
+</details>
+
+#### Option 2 - Array of IDs
+
+**authors**
+- name
+- nationality
+- book_ids
+
+**books**
+- title
+- pub_date
+
+<details>
+  <summary><strong>What's the problem here?</strong></summary>
+
+  > Parsing list, can't index (for speed!)
+
+</details>
+
+#### Option 3
+
+**authors**
+- name
+- nationality
+
+**books**
+- title
+- pub_date
+- author_id
 
 ![one_to_many](images/one_to_many.png)
 
@@ -469,10 +526,10 @@ association with a specific category.
 
 ## Closing/Questions (5 min / 2:30)
 
-* What is the distinctive feature of a relational database?
-* How is information stored in a relational database?
-* What are the different types of relations that exist in a relational database?
-* How do we indicate a one-to-many relationship in a database?
+- What is the distinctive feature of a relational database?
+- How is information stored in a relational database?
+- What are the different types of relations that exist in a relational database?
+- How do we indicate a one-to-many relationship in a database?
 
 ## Practice
 
@@ -490,13 +547,13 @@ fully expect this to be a challenge.
 
 ## Additional Resources
 
-* [Postgres Guide](http://postgresguide.com/)
-* [SQL Zoo](https://sqlzoo.net/)
-* [W3 Schools SQL tutorial](https://www.w3schools.com/sql/)
-* [SQL Course](http://www.sqlcourse.com/)
+- [Postgres Guide](http://postgresguide.com/)
+- [SQL Zoo](https://sqlzoo.net/)
+- [W3 Schools SQL tutorial](https://www.w3schools.com/sql/)
+- [SQL Course](http://www.sqlcourse.com/)
 
 ## [License](LICENSE)
 
 1. All content is licensed under a CC­BY­NC­SA 4.0 license.
 1. All software code is licensed under GNU GPLv3. For commercial use or
-    alternative licensing, please contact legal@ga.co.
+   alternative licensing, please contact legal@ga.co.
