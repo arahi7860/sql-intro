@@ -224,7 +224,7 @@ and transactions. Relational databases are also good at managing inventories and
 tracking deliveries. ACID compliance ensures that a process is finished to
 completion or not at all. You'll never lose a package or find it in two places.
 
-## Exploring Postgres CLI (20 minutes / 0:40)
+## Exploring Postgres CLI (15 minutes / 0:35)
 
 Start by "spotlight searching" (`command-space`) for Postgres and launching
 `Postgres.app`. Once you see the elephant in your Mac menu bar, you'll know
@@ -332,7 +332,7 @@ SELECT column_name, other_column FROM table_name WHERE some_value > 100;
 SELECT column_name, other_column FROM table_name WHERE value > 100 LIMIT 10 ORDER BY DESC ;
 ```
 
-## Schema (10 minutes / 0:50)
+## Schema (5 minutes / 0:40)
 
 Every application's database will have one or more tables. You will recall, each
 table stores information about a particular model (e.g., `artists`, `songs`).
@@ -376,14 +376,14 @@ start with something simple.
 Instead of typing this into `psql`, you can write to a `.sql` file and run it,
 just like we have with `.js` and `.rb` files.
 
-## I Do: Building Our Database & Basic Queries (20 min / 1:10)
+## I Do: Building Our Database & Basic Queries (20 min / 1:00)
 
 Follow along with the instructions in the
 [library SQL Exercise repo](https://git.generalassemb.ly/dc-wdi-python-django/library_sql).
 
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
-## Relationships in SQL / SQL JOINs (15 min / 1:25)
+## Relationships in SQL / SQL JOINs (10 min / 1:10)
 
 One of the key features of relational databases is that they can represent
 relationships between rows in different tables.
@@ -479,11 +479,11 @@ SELECT * FROM books JOIN authors ON books.author_id = authors.id;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
 ```
 
-<!-- ### You Do: Books and Authors (15 min / 2:25)
+### You Do: Books and Authors (15 min / 1:25)
 
 See advanced_queries.sql in the
 [library_sql](https://git.generalassemb.ly/dc-wdi-python-django/library_sql)
-exercise. -->
+exercise.
 
 ### Aside: Less Common Joins
 
