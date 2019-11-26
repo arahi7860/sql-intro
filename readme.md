@@ -7,10 +7,6 @@ management. Despite it's age, it's still one of the most common and popular
 forms of data storage in building web applications - we're going to use it when
 we start learning Django!
 
-## Prerequisites
-
-- None!
-
 ## Objectives
 
 By the end of this, developers should be able to:
@@ -54,8 +50,6 @@ in a non-relational DB (also called noSQL sometimes).
 
 ### Lets Talk Terminology
 
-![SQL vs noSQL comparison](images/SQL-MongoDB-comparison.png)
-
 **Database:** The actual set of data being stored
 
 - We may have multiple databases for an application
@@ -80,6 +74,8 @@ database from the command line
 - **What was the MongoDB equivalent?**
 
 ## Data Compared: Collections -> Tables (10 min / 0:20)
+
+![SQL vs noSQL comparison](images/SQL-MongoDB-comparison.png)
 
 Within a MongoDB database, our data is organized in JSON-like objects. Here's an
 example collection:
@@ -141,15 +137,7 @@ Note: there's no definitive naming convention for SQL databases. It's far more
 important to be consistent across your db. I'm in the "plural table names and
 singular column names" camp
 
-### You Do: Database Conversion (10 min / 0:30)
-
-Find a partner and think of a shared interest that can be used to demonstrate a
-one-to-many relationship like the example above. Use a model from a previous
-project if you need some inspiration. Find a space to whiteboard or draw on
-paper and create sample JSON data. Then create tables to represent the same data
-as it would appear in a SQL database.
-
-## Relational vs Non-Relational | PostgreSQL vs MongoDB (10 min / 0:40)
+## Relational vs Non-Relational | PostgreSQL vs MongoDB (10 min / 0:20)
 
 Non-Relational or **noSQL** databases have existed in some form for decades,
 however their use didn't become wide spread until recently. noSQL databases
@@ -209,7 +197,7 @@ like MySQL, MS SQL, Oracle, and sqlite. They are all queried using SQL.
 - SQL queries are a powerful tool to quickly retrieve data in a large variety of
   ways.
 
-#### Both offer:
+### Both Offer:
 
 ##### Automatic Scaling
 
@@ -236,9 +224,7 @@ and transactions. Relational databases are also good at managing inventories and
 tracking deliveries. ACID compliance ensures that a process is finished to
 completion or not at all. You'll never lose a package or find it in two places.
 
-## Make sure Postgres.app is installed
-
-## Exploring Postgres CLI (20 minutes / 1:00)
+## Exploring Postgres CLI (20 minutes / 0:40)
 
 Start by "spotlight searching" (`command-space`) for Postgres and launching
 `Postgres.app`. Once you see the elephant in your Mac menu bar, you'll know
@@ -346,7 +332,7 @@ SELECT column_name, other_column FROM table_name WHERE some_value > 100;
 SELECT column_name, other_column FROM table_name WHERE value > 100 LIMIT 10 ORDER BY DESC ;
 ```
 
-## Schema (10 minutes / 1:10)
+## Schema (10 minutes / 0:50)
 
 Every application's database will have one or more tables. You will recall, each
 table stores information about a particular model (e.g., `artists`, `songs`).
@@ -390,16 +376,14 @@ start with something simple.
 Instead of typing this into `psql`, you can write to a `.sql` file and run it,
 just like we have with `.js` and `.rb` files.
 
-## We Do: Building Our Database & Basic Queries (30 min / 1:40)
+## I Do: Building Our Database & Basic Queries (20 min / 1:10)
 
-Clone down and follow the instructions in the
+Follow along with the instructions in the
 [library SQL Exercise repo](https://git.generalassemb.ly/dc-wdi-python-django/library_sql).
 
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
-## BREAK (10 min / 1:50)
-
-## Relationships in SQL / SQL JOINs (20 min / 2:10)
+## Relationships in SQL / SQL JOINs (15 min / 1:25)
 
 One of the key features of relational databases is that they can represent
 relationships between rows in different tables.
@@ -416,7 +400,9 @@ as:
 - Searching for books based on attributes of the author (e.g., all books written
   by a Chinese author)
 
-#### Option 1 - Duplicate Info
+There are a few ways in which you could set up your database to show these relationships:
+
+#### Option 1: Duplicate Info
 
 **authors**
 
@@ -439,7 +425,7 @@ as:
 
 </details>
 
-#### Option 2 - Array of IDs
+#### Option 2: Array of IDs
 
 **authors**
 
@@ -459,7 +445,7 @@ as:
 
 </details>
 
-#### Option 3
+#### Option 3: Column for IDs
 
 **authors**
 
@@ -493,13 +479,13 @@ SELECT * FROM books JOIN authors ON books.author_id = authors.id;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
 ```
 
-## You Do: Books and Authors (15 min / 2:25)
+<!-- ### You Do: Books and Authors (15 min / 2:25)
 
 See advanced_queries.sql in the
 [library_sql](https://git.generalassemb.ly/dc-wdi-python-django/library_sql)
-exercise.
+exercise. -->
 
-## Aside: Less Common Joins
+### Aside: Less Common Joins
 
 There are actually a number of ways to join multiple tables with `JOIN`, if
 you're really curious, check out this article:
@@ -530,7 +516,7 @@ association with a specific category.
 
 ![many_to_many](images/many_to_many.png)
 
-## Closing/Questions (5 min / 2:30)
+## Closing/Questions (5 min / 1:30)
 
 - What is the distinctive feature of a relational database?
 - How is information stored in a relational database?
