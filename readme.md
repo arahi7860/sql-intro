@@ -371,7 +371,7 @@ part, things you've seen before...
 
 - boolean
 - integer
-- float
+- numeric
 - text / VARCHAR
   - VARCHAR is limited length, TEXT is unlimited
 - date
