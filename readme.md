@@ -5,7 +5,7 @@
 It's time to learn our second database format! SQL is an older form of database
 management. Despite it's age, it's still one of the most common and popular
 forms of data storage in building web applications - we're going to use it when
-we start learning Django!
+we start learning [Django](https://www.djangoproject.com/)!
 
 ## Objectives
 
@@ -131,7 +131,7 @@ In a relational database, this data would be stored in two tables.
 | 3   | Raspberry Beret     | 1985          | 1         |
 | 4   | Your Song           | 1970          | 2         |
 
-See also: [Naming style guide](http://www.sqlstyle.guide/).
+See also: [Naming style guide](https://docs.telemetry.mozilla.org/concepts/sql_style.html#variable-names).
 
 Note: there's no definitive naming convention for SQL databases. It's far more
 important to be consistent across your db. I'm in the "plural table names and
@@ -275,17 +275,37 @@ CREATE TABLE students (
 
 SELECT * FROM students;
 
-INSERT INTO students (first_name, last_name) VALUES ('Andy', 'Whitely');
+INSERT INTO 
+  students (first_name, last_name) 
+VALUES 
+  ('Andy', 'Whitely');
 -- This won't work!
 
-INSERT INTO students (first_name, last_name, quote, birthday, ssn) VALUES ('Andy', 'Whitely', 'Two goldfish are in a tank. One says, "Know how to drive this thing?"', 'April 7', 8675309);
+INSERT INTO 
+  students (first_name, last_name, quote, birthday, ssn) 
+VALUES 
+  ('Andy', 'Whitely', 'Two goldfish are in a tank. One says, "Know how to drive this thing?"', 'April 7', 8675309);
+
 SELECT * FROM students;
 
-UPDATE students SET first_name = 'Andrew' WHERE first_name = 'Andy';
+UPDATE 
+  students 
+SET 
+  first_name = 'Andrew' 
+WHERE 
+  first_name = 'Andy';
+
 SELECT * FROM students;
 
-DELETE FROM students WHERE first_name = 'Andy';
-DELETE FROM students WHERE first_name = 'Andrew';
+DELETE FROM 
+  students 
+WHERE 
+  first_name = 'Andy';
+  
+DELETE FROM
+  students 
+WHERE 
+  first_name = 'Andrew';
 
 SELECT * FROM students;
 
@@ -316,7 +336,7 @@ In short...
 - Case sensitive for values (tables, columns, etc), but not commands (select,
   insert, drop).
 - Always use single quotes when typing out string values
-- Example style guide [here](http://www.sqlstyle.guide/)
+- Example style guide [here](https://docs.telemetry.mozilla.org/concepts/sql_style.html)
 
 ```sql
 -- gets all values from a table
@@ -379,7 +399,7 @@ just like we have with `.js` and `.rb` files.
 ## I Do: Building Our Database & Basic Queries (20 min / 1:00)
 
 Follow along with the instructions in the
-[library SQL Exercise repo](https://git.generalassemb.ly/dc-wdi-python-django/library_sql).
+[library SQL Exercise repo](https://git.generalassemb.ly/sei-axolotls/library_sql).
 
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
@@ -478,6 +498,9 @@ SELECT * FROM books where author_id = 2;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id;
 SELECT * FROM books JOIN authors ON books.author_id = authors.id WHERE authors.nationality = 'United States of America';
 ```
+### Join Style
+While the `JOIN`s above work just fine, it's a best practice to explicitly state
+the kind of join you are using to avoid any kind of unexpected behavior. Per the [style guide](https://docs.telemetry.mozilla.org/concepts/sql_style.html#joins) has a section on this.
 
 ### You Do: Books and Authors (15 min / 1:25)
 
