@@ -377,7 +377,7 @@ part, things you've seen before...
 - date
 - time
 
-> [And many more...](https://www.postgresql.org/docs/9.5/static/datatype.html)
+> [And many more...](https://www.postgresql.org/docs/15/datatype.html)
 
 ### Constraints
 
@@ -385,7 +385,7 @@ Constraints act as limits on the data that can go in a column.
 
 - e.g., `NOT NULL` and `UNIQUE`
 
-> [And many more...](https://www.postgresql.org/docs/9.5/static/ddl-constraints.html)
+> [And many more...](https://www.postgresql.org/docs/15/ddl-constraints.html)
 
 ### Defining a Schema
 
@@ -394,12 +394,12 @@ can change later on if we need to add / remove tables or columns, but we'll
 start with something simple.
 
 Instead of typing this into `psql`, you can write to a `.sql` file and run it,
-just like we have with `.js` and `.rb` files.
+just like we have with `.js` and `.py` files.
 
 ## I Do: Building Our Database & Basic Queries (20 min / 1:00)
 
 Follow along with the instructions in the
-[library SQL Exercise repo](https://git.generalassemb.ly/sei-axolotls/library_sql).
+[library SQL Exercise repo](https://git.generalassemb.ly/sei-buffleheads/library_sql).
 
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
@@ -505,7 +505,7 @@ the kind of join you are using to avoid any kind of unexpected behavior. Per the
 ### You Do: Books and Authors (15 min / 1:25)
 
 See advanced_queries.sql in the
-[library_sql](https://git.generalassemb.ly/dc-wdi-python-django/library_sql)
+[library_sql](https://git.generalassemb.ly/sei-buffleheads/library_sql)
 exercise.
 
 ### Aside: Less Common Joins
@@ -554,11 +554,11 @@ fully expect this to be a challenge.
 - [Code School Try SQL](https://www.codeschool.com/courses/try-sql)
 - [SQL for Beginners](https://www.codewars.com/collections/sql-for-beginners/):
   Created by WDI14 graduate.
-- [The official PostgreSQL Documentation](https://www.postgresql.org/docs/9.3/static/index.html)
+- [The official PostgreSQL Documentation](https://www.postgresql.org/docs/15/index.html)
   is also very good, in particular:
-  - [The preface](https://www.postgresql.org/docs/9.3/static/preface.html)
-  - [The official tutorial](https://www.postgresql.org/docs/9.3/static/tutorial.html)
-  - [The overview of SQL](https://www.postgresql.org/docs/9.3/static/sql.html)
+  - [The preface](https://www.postgresql.org/docs/15/preface.html)
+  - [The official tutorial](https://www.postgresql.org/docs/15/tutorial.html)
+  - [The overview of SQL](https://www.postgresql.org/docs/15/sql.html)
 
 ## Additional Resources
 
