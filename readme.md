@@ -399,7 +399,7 @@ just like we have with `.js` and `.py` files.
 ## I Do: Building Our Database & Basic Queries (20 min / 1:00)
 
 Follow along with the instructions in the
-[library SQL Exercise repo](https://git.generalassemb.ly/sei-buffleheads/library_sql).
+[library SQL Exercise repo](https://git.generalassemb.ly/sei-grimrepos/library_sql).
 
 Complete the queries in `basic_queries.sql` in the library_sql repo.
 
@@ -505,7 +505,7 @@ the kind of join you are using to avoid any kind of unexpected behavior. Per the
 ### You Do: Books and Authors (15 min / 1:25)
 
 See advanced_queries.sql in the
-[library_sql](https://git.generalassemb.ly/sei-buffleheads/library_sql)
+[library_sql](https://git.generalassemb.ly/sei-grimrepos/library_sql)
 exercise.
 
 ### Aside: Less Common Joins
